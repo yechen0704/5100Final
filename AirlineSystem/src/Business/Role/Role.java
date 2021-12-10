@@ -21,6 +21,7 @@ public abstract class Role {
         Customer("Customer"),
         Ackemma("Ackemma"),
         ClaimSettler("ClaimSettler"),
+        InsuranceSaler("InsuranceSaler"),
         SysAdmin("Sysadmin");
         
         private String value;
