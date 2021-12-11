@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,29 +17,42 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raunak
  */
-public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
+public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
-    private EcoSystem business;
+     private JPanel mainScreen;
+    private EcoSystem system;
     private UserAccount userAccount;
     
     
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public AircraftCrewWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         initComponents();
         
-        this.userProcessContainer = userProcessContainer;
-        this.userAccount = account;
-        this.business = business;
-      
-        
+        this.mainScreen = mainScreen;
+        this.userAccount = userAccount;
+        this.system = system;
         populateTable();
     }
     
     public void populateTable(){
-        
+        DefaultTableModel model = (DefaultTableModel) tblDm.getModel();
+        model.setRowCount(0);
+        for(DeliveryMan deliveryMan : system.getDeliveryManDirectory().getDeliveryManList()){
+            if(deliveryMan.getUserName().equals(userAccount.getUsername())){
+                for(Order order : deliveryMan.getOrderList()){
+                    Object[] row = new Object[6];
+                    row[0] = order;
+                    row[1] = order.getRestaurentName();
+                    row[2] = order.getCustomerName();
+                    row[3] = order.getDeliveryAddress();
+                    row[4] = order.getCost();
+                    row[5] = order.getStatus();
+                    model.addRow(row);
+                }
+            }
+        }
     }
 
     /**
@@ -135,9 +149,21 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
+        int selectedRow = tblDm.getSelectedRow();
         
-
+        if (selectedRow < 0){
+            return;
+        }
+        Order order = (Order)tblDm.getValueAt(selectedRow, 0); 
         
+        if(order.getStatus().equals("Delivered")){
+            JOptionPane.showMessageDialog(null," Order Already Delivered","Warning",JOptionPane.WARNING_MESSAGE);
+        }else{
+            ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(mainScreen,order,system);
+            mainScreen.add("processWorkRequestJPanel", processWorkRequestJPanel);
+            CardLayout layout = (CardLayout) mainScreen.getLayout();
+            layout.next(mainScreen);
+        }
     }//GEN-LAST:event_processJButtonActionPerformed
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed

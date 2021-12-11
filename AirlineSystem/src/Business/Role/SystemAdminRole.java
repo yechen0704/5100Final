@@ -17,8 +17,14 @@ import javax.swing.JPanel;
 public class SystemAdminRole extends Role{
 
   
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
-        return new SystemAdminWorkAreaJPanel(userProcessContainer, system);
+    public SystemAdminRole(){
+        this.type = RoleType.SysAdmin;
+    }
+    
+    @Override
+    public JPanel createWorkArea(JPanel mainScreen, UserAccount userAccount, EcoSystem system) {
+        this.type = RoleType.SysAdmin;
+        return new SystemAdminWorkAreaJPanel(mainScreen, userAccount, system);
     }
     
 }

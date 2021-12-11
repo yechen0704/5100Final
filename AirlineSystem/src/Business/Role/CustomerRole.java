@@ -21,7 +21,7 @@ public class CustomerRole extends Role{
         this.type = RoleType.Customer;
     }
     
-   @Override
+    @Override
     public JPanel createWorkArea(JPanel mainScreen, UserAccount userAccount, EcoSystem system) {
         this.type = RoleType.Customer;
         return new CustomerAreaJPanel(mainScreen, userAccount, system);

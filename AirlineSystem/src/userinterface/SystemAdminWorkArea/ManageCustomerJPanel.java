@@ -5,6 +5,15 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.Customer.Customer;
+import Business.EcoSystem;
+import Business.Role.CustomerRole;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author 刘欣卓
@@ -14,8 +23,14 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageCustomerJPanel
      */
-    public ManageCustomerJPanel() {
+    JPanel mainScreen;
+    EcoSystem system;
+    UserAccount userAccount;
+    public ManageCustomerJPanel(JPanel mainScreen, EcoSystem system) {
         initComponents();
+        this.mainScreen = mainScreen;
+        this.system = system;
+        populateTblCustomer();
     }
 
     /**
@@ -215,9 +230,9 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
         }
 
         btnCreate.setEnabled(false);
-        deleteBtn.setEnabled(false);
-        updateBtn.setEnabled(false);
-        ConfirmBtn.setEnabled(true);
+        btnDelete.setEnabled(false);
+        btnUpdate.setEnabled(false);
+        btnConfirm.setEnabled(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed

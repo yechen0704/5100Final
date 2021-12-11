@@ -4,10 +4,13 @@
  */
 package userinterface.DeliveryManRole;
 
+import Business.Customer.Customer;
+import Business.EcoSystem;
 import java.awt.CardLayout;
+import Business.Order.Order;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 /**
  *
  * @author raunak
@@ -16,12 +19,17 @@ import javax.swing.JPanel;
 
 public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
-    JPanel userProcessContainer;
+    JPanel mainScreen;
+    Order order;
+    EcoSystem system;
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public ProcessWorkRequestJPanel(JPanel userProcessContainer) {
+    public ProcessWorkRequestJPanel(JPanel mainScreen, Order order,EcoSystem system) {
         initComponents();
+        this.mainScreen = mainScreen;
+        this.order = order;
+        this.system=system;
         
     }
 
@@ -91,14 +99,13 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
+        mainScreen.remove(this);
+        Component[] componentArray = mainScreen.getComponents();
         Component component = componentArray[componentArray.length - 1];
         DeliveryManWorkAreaJPanel dwjp = (DeliveryManWorkAreaJPanel) component;
         dwjp.populateTable();
-        
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
+        CardLayout layout = (CardLayout) mainScreen.getLayout();
+        layout.previous(mainScreen);
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
