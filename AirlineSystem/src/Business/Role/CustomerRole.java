@@ -17,10 +17,16 @@ import javax.swing.JPanel;
  */
 public class CustomerRole extends Role{
 
-    
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new CustomerAreaJPanel(userProcessContainer, account);
+    public CustomerRole(){
+        this.type = RoleType.Customer;
     }
+    
+   @Override
+    public JPanel createWorkArea(JPanel mainScreen, UserAccount userAccount, EcoSystem system) {
+        this.type = RoleType.Customer;
+        return new CustomerAreaJPanel(mainScreen, userAccount, system);
+    }
+
     
     
 }

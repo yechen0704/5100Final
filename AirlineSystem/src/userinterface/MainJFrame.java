@@ -49,7 +49,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         loginJLabel = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
-        container = new javax.swing.JPanel();
+        mainScreen = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,8 +113,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
-        container.setLayout(new java.awt.CardLayout());
-        jSplitPane1.setRightComponent(container);
+        mainScreen.setLayout(new java.awt.CardLayout());
+        jSplitPane1.setRightComponent(mainScreen);
 
         getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
 
@@ -135,11 +135,11 @@ public class MainJFrame extends javax.swing.JFrame {
         userNameJTextField.setText("");
         passwordField.setText("");
 
-        container.removeAll();
+        mainScreen.removeAll();
         JPanel blankJP = new JPanel();
-        container.add("blank", blankJP);
-        CardLayout crdLyt = (CardLayout) container.getLayout();
-        crdLyt.next(container);
+        mainScreen.add("blank", blankJP);
+        CardLayout crdLyt = (CardLayout) mainScreen.getLayout();
+        crdLyt.next(mainScreen);
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
@@ -178,7 +178,6 @@ public class MainJFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -186,6 +185,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton loginJButton;
     private javax.swing.JLabel loginJLabel;
     private javax.swing.JButton logoutJButton;
+    private javax.swing.JPanel mainScreen;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JTextField userNameJTextField;
     // End of variables declaration//GEN-END:variables

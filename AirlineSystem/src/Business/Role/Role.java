@@ -20,9 +20,9 @@ public abstract class Role {
         AirlineAdmin("AirlineAdmin"),
         Customer("Customer"),
         Ackemma("Ackemma"),
-        ClaimSettler("ClaimSettler"),
-        InsuranceSaler("InsuranceSaler"),
-        Compensationer("Compensationer"),
+        Compensator("Compensator"),
+        Seller("Seller"),
+        AircraftCrew("AircraftCrew"),
         Commander("Commander"),
         Announcer("Announcer"),
         TicketChecker("TicketChecker"),
@@ -41,6 +41,12 @@ public abstract class Role {
         public String toString() {
             return value;
         }
+    }
+    
+    public RoleType type;
+
+    public RoleType getType() {
+        return type;
     }
     
     public abstract JPanel createWorkArea(JPanel userProcessContainer, 

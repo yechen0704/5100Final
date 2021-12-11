@@ -14,11 +14,15 @@ import userinterface.DeliveryManRole.DeliveryManWorkAreaJPanel;
  *
  * @author harold
  */
-public class DeliverManRole extends Role {
+public class AircraftCrewRole extends Role {
+    
+    public AircraftCrewRole(){
+        this.type = RoleType.AircraftCrew;
+    }
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new DeliveryManWorkAreaJPanel(userProcessContainer,account,business);//To change body of generated methods, choose Tools | Templates.
+    public JPanel createWorkArea(JPanel mainScreen, UserAccount userAccount, EcoSystem system) {
+        return new AircraftCrewWorkAreaJPanel(mainScreen,userAccount,system);//To change body of generated methods, choose Tools | Templates.
     }
     
 }
