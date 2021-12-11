@@ -22,6 +22,10 @@ public abstract class Role {
         Ackemma("Ackemma"),
         ClaimSettler("ClaimSettler"),
         InsuranceSaler("InsuranceSaler"),
+        Compensationer("Compensationer"),
+        Commander("Commander"),
+        Announcer("Announcer"),
+        TicketChecker("TicketChecker"),
         SysAdmin("Sysadmin");
         
         private String value;
