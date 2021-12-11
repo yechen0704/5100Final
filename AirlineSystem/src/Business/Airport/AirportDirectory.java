@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Restaurant;
+package Business.Airport;
 
 /**
  *
- * @author harold
+ * @author 刘欣卓
  */
-public class RestaurantDirectory {
+public class AirportDirectory {
     
 }
