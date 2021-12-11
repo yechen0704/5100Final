@@ -5,7 +5,15 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.EcoSystem;
+import Business.Restaurant.Restaurant;
+import Business.Role.AdminRole;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,11 +21,18 @@ import java.awt.CardLayout;
  */
 public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
 
+    JPanel mainScreen;
+    EcoSystem system;
+    UserAccount userAccount;
     /**
      * Creates new form ManageAirlineAdminJPanel
      */
-    public ManageAirlineAdminJPanel() {
+    public ManageAirlineAdminJPanel(JPanel mainScreen, EcoSystem system) {
         initComponents();
+        this.mainScreen = mainScreen;
+        this.system = system;
+        populatetblAla();
+        btnConfirm.setEnabled(false);
     }
 
     /**
@@ -46,7 +61,7 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         btnBack1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblRes1 = new javax.swing.JTable();
+        tblAla = new javax.swing.JTable();
         btnCreate1 = new javax.swing.JButton();
         txtName1 = new javax.swing.JTextField();
         btnUpdate1 = new javax.swing.JButton();
@@ -144,7 +159,7 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        tblRes1.setModel(new javax.swing.table.DefaultTableModel(
+        tblAla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -170,7 +185,7 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblRes1);
+        jScrollPane2.setViewportView(tblAla);
 
         btnCreate1.setText("Create Restaurant");
         btnCreate1.addActionListener(new java.awt.event.ActionListener() {
@@ -414,7 +429,7 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
         }else{
             UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(name, uname, password, new AdminRole());
             Restaurant restro= system.getRestaurantDirectory().createRestaurantInfo(name,uname);
-            populatetblRes();
+            populatetblAla();
             txtUsername.setText("");
             txtPwd.setText("");
         }
@@ -448,7 +463,7 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
             UserAccount user=system.getUserAccountDirectory().authenticateUser(username, pwd);
             system.getUserAccountDirectory().deleteUserAccount(user);
             system.getRestaurantDirectory().deleteRestaurent(user.getUsername());
-            populatetblRes();
+            populatetblAla();
         }else{
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
         }
@@ -465,7 +480,7 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"  User Name already exists ");
         }else{
             system.getUserAccountDirectory().updateUserAccount(name,userAccount,uname,password);
-            populatetblRes();
+            populatetblAla();
             btnCreate.setEnabled(true);
             btnDelete.setEnabled(true);
             btnUpdate.setEnabled(true);
@@ -501,8 +516,8 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblAla;
     private javax.swing.JTable tblRes;
-    private javax.swing.JTable tblRes1;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtName1;
     private javax.swing.JPasswordField txtPwd;
@@ -510,4 +525,19 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtUsername;
     private javax.swing.JTextField txtUsername1;
     // End of variables declaration//GEN-END:variables
+
+    private void populatetblAla() {
+        DefaultTableModel model = (DefaultTableModel) tblAla.getModel();
+        model.setRowCount(0);
+        for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
+            if ("Business.Role.AirlineAdmin".equals(user.getRole().toString())) {
+                Object[] row = new Object[3];
+                row[0] = user.getName();
+                row[1] = user.getUsername();
+                row[2] = user.getPassword();
+                model.addRow(row);
+            }            
+        }
+    }
 }
+

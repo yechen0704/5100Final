@@ -8,22 +8,22 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.DeliveryManRole.AircraftCrewWorkAreaJPanel;
+import userinterface.CustomerRole.CustomerAreaJPanel;
 
 /**
  *
- * @author harold
+ * @author 刘欣卓
  */
-public class AircraftCrewRole extends Role {
+public class TicketCheckerRole extends Role{
     
-    public AircraftCrewRole(){
-        this.type = RoleType.AircraftCrew;
+    public TicketCheckerRole(){
+        this.type = RoleType.TicketChecker;
     }
-
+    
     @Override
     public JPanel createWorkArea(JPanel mainScreen, UserAccount userAccount, EcoSystem system) {
-        this.type = RoleType.AircraftCrew;
-        return new AircraftCrewWorkAreaJPanel(mainScreen,userAccount,system);//To change body of generated methods, choose Tools | Templates.
+        this.type = RoleType.TicketChecker;
+        return new TicketCheckerWorkAreaJPanel(mainScreen, userAccount, system);
     }
     
 }

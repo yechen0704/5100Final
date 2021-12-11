@@ -8,6 +8,7 @@ package userinterface.SystemAdminWorkArea;
 import Business.EcoSystem;
 
 import Business.Organization;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -23,20 +24,29 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form SystemAdminWorkAreaJPanel
      */
-    JPanel userProcessContainer;
-    EcoSystem ecosystem;
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+    JPanel mainScreen;
+    EcoSystem system;
+    UserAccount userAccount;
+    public SystemAdminWorkAreaJPanel(JPanel mainScreen,UserAccount userAccount, EcoSystem system) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.ecosystem=ecosystem;
+        this.mainScreen = mainScreen;
+        this.system = system;
+        this.userAccount = userAccount;
         populateTree();
     }
     
     public void populateTree(){
-        DefaultTreeModel model=(DefaultTreeModel)jTree.getModel();
-       // Add the code for draw your system structure shown by JTree
-       
-        model.reload();
+        jTree.setModel(null);
+        
+        // Add the code for draw your system structure shown by JTree
+        DefaultMutableTreeNode node1 = new DefaultMutableTreeNode("System Administrator");
+        
+        node1.add(new DefaultMutableTreeNode("Restaurant"));
+        node1.add(new DefaultMutableTreeNode("Customoer"));
+        node1.add(new DefaultMutableTreeNode("Delivery Man"));
+        
+        DefaultTreeModel model = new DefaultTreeModel(node1);
+        jTree.setModel(model);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,7 +65,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         lblSelectedNode = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCustomer = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
@@ -90,7 +100,12 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jButton1.setText("Manage AirlineAdmin");
 
-        jButton2.setText("Manage Customer");
+        btnCustomer.setText("Manage Customer");
+        btnCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCustomerActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Manage Insurance Company");
 
@@ -104,7 +119,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
-                    .addComponent(jButton2)
+                    .addComponent(btnCustomer)
                     .addComponent(jButton1)
                     .addComponent(lblSelectedNode))
                 .addContainerGap(223, Short.MAX_VALUE))
@@ -119,7 +134,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(79, 79, 79)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnCustomer)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addContainerGap(171, Short.MAX_VALUE))
@@ -138,10 +153,18 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTreeValueChanged
 
+    private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
+        // TODO add your handling code here:
+        ManageCustomerJPanel mcjp = new ManageCustomerJPanel(mainScreen,system);
+        mainScreen.add("ManageCustomerJPanel", mcjp);
+        CardLayout layout = (CardLayout) mainScreen.getLayout();
+        layout.next(mainScreen);
+    }//GEN-LAST:event_btnCustomerActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCustomer;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

@@ -42,6 +42,40 @@ public class UserAccountDirectory {
         return userAccount;
     }
     
+    public UserAccount createUserAccount(String username, String password, Role role){
+        UserAccount userAccount = new UserAccount();
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+    
+    public UserAccount createUserAccount(String name, String username, String password, Role role){
+        UserAccount userAccount = new UserAccount();
+        userAccount.setName(name);
+        userAccount.setUsername(username);
+        userAccount.setPassword(password);
+        userAccount.setRole(role);
+        userAccountList.add(userAccount);
+        return userAccount;
+    }
+    
+    public void deleteUserAccount(UserAccount user){
+        userAccountList.remove(user);
+    }
+    
+    public void updateUserAccount(UserAccount user,String username, String password){
+        user.setUsername(username);
+        user.setPassword(password);
+    }
+    
+    public void updateUserAccount(String name, UserAccount user,String username, String password){
+        user.setName(name);
+        user.setUsername(username);
+        user.setPassword(password);
+    }
+    
     public boolean checkIfUsernameIsUnique(String username){
         for (UserAccount ua : userAccountList){
             if (ua.getUsername().equals(username))
