@@ -37,4 +37,4 @@ Flight often due to the decentralized management of various departments, some ai
   - Insurance Seller； 
   - Insurance Employee；
   - Customer
-![Alt text](https://github.com/yechen0704/5100Final/blob/Chenye/national%20Airplane%20Outlier.png)
+![Alt text](https://github.com/yechen0704/5100Final/blob/Chenye/Airline%20System%20Architecture.png)
