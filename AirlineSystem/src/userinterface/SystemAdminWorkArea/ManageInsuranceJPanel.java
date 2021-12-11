@@ -9,12 +9,12 @@ package userinterface.SystemAdminWorkArea;
  *
  * @author 刘欣卓
  */
-public class ManageAirlineManagerJPanel extends javax.swing.JPanel {
+public class ManageInsuranceJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageInsuranceComJPanel
      */
-    public ManageAirlineManagerJPanel() {
+    public ManageInsuranceJPanel() {
         initComponents();
     }
 
@@ -48,7 +48,7 @@ public class ManageAirlineManagerJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Airline Manager Info");
+        jLabel1.setText("Insurance Company Info");
 
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
