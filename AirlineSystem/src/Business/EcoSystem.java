@@ -7,11 +7,12 @@ package Business;
 
 
 import Business.Customer.CustomerDirectory;
-import Business.DeliveryMan.DeliveryManDirectory;
-import Business.Restaurant.RestaurantDirectory;
+import Business.Airline.AirlineDirectory;
+import Business.InsuranceCom.InsuranceComDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import java.util.ArrayList;
+import Business.Airport.AirportDirectory;
 
 /**
  *
@@ -20,15 +21,18 @@ import java.util.ArrayList;
 public class EcoSystem extends Organization{
     
     private static EcoSystem business;
-    private RestaurantDirectory restaurantDirectory;
+    private AirlineDirectory airlineDirectory;
+    private AirportDirectory airportDirectory;
+    private InsuranceComDirectory insuranceComDirectory;
     private CustomerDirectory customerDirectory;
-    private DeliveryManDirectory deliveryManDirectory;
 
-    public EcoSystem(RestaurantDirectory restaurantDirectory, CustomerDirectory customerDirectory, DeliveryManDirectory deliveryManDirectory) {
+    public EcoSystem(AirlineDirectory airlineDirectory, AirportDirectory airportDirectory, InsuranceComDirectory insuranceComDirectory, CustomerDirectory customerDirectory) {
 
-        this.restaurantDirectory = restaurantDirectory;
+        this.airlineDirectory = airlineDirectory;
+        this.airportDirectory = airportDirectory;
+        this.insuranceComDirectory = insuranceComDirectory;
         this.customerDirectory = customerDirectory;
-        this.deliveryManDirectory = deliveryManDirectory;
+     
     }
     
     public static EcoSystem getInstance(){
@@ -66,25 +70,37 @@ public class EcoSystem extends Organization{
         this.customerDirectory = customerDirectory;
     }
 
-    public DeliveryManDirectory getDeliveryManDirectory() {
-        if(deliveryManDirectory == null){
-            deliveryManDirectory = new DeliveryManDirectory();
+    public AirlineDirectory getAirlineDirectory() {
+        if(airlineDirectory == null){
+            airlineDirectory = new AirlineDirectory();
         }
-        return deliveryManDirectory;
+        return airlineDirectory;
     }
 
-    public void setDeliveryManDirectory(DeliveryManDirectory deliveryManDirectory) {
-        this.deliveryManDirectory = deliveryManDirectory;
+    public void setAirlineDirectory(AirlineDirectory airlineDirectory) {
+        this.airlineDirectory = airlineDirectory;
     }
 
-    public RestaurantDirectory getRestaurantDirectory() {
-        if(restaurantDirectory == null){
-            restaurantDirectory = new RestaurantDirectory();
+    public AirportDirectory getAirportDirectory() {
+        if(airportDirectory == null){
+            airportDirectory = new AirportDirectory();
         }
-        return restaurantDirectory;
+        return airportDirectory;
     }
 
-    public void setRestaurantDirectory(RestaurantDirectory restaurantDirectory) {
-        this.restaurantDirectory = restaurantDirectory;
+    public void setAirportDirectory(AirportDirectory airportDirectory) {
+        this.airportDirectory = airportDirectory;
     }
+
+    public InsuranceComDirectory getInsuranceComDirectory() {
+        if(insuranceComDirectory == null){
+            insuranceComDirectory = new InsuranceComDirectory();
+        }
+        return insuranceComDirectory;
+    }
+
+    public void setInsuranceComDirectory(InsuranceComDirectory insuranceComDirectory) {
+        this.insuranceComDirectory = insuranceComDirectory;
+    }
+
 }

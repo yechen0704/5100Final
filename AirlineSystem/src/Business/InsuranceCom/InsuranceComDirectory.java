@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.DeliveryMan;
+package Business.InsuranceCom;
 
 /**
  *
  * @author harold
  */
-public class DeliveryManDirectory {
+public class InsuranceComDirectory {
     
 }
