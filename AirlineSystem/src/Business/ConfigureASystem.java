@@ -2,8 +2,10 @@ package Business;
 
 import Business.Employee.Employee;
 import Business.Role.AckemmaRole;
+import Business.Role.AircraftCrewRole;
 import Business.Role.AnnouncerRole;
 import Business.Role.CommanderRole;
+import Business.Role.MOPRole;
 import Business.Role.SellerRole;
 import Business.Role.SystemAdminRole;
 import Business.Role.TicketCheckerRole;
@@ -38,6 +40,9 @@ public class ConfigureASystem {
         
         Employee employee6 = system.getEmployeeDirectory().createEmployee("MOP");
         UserAccount ua6 = system.getUserAccountDirectory().createUserAccount("mop", "mop", employee, new MOPRole());
+        
+        Employee employee7 = system.getEmployeeDirectory().createEmployee("AC");
+        UserAccount ua7 = system.getUserAccountDirectory().createUserAccount("aircraftcrew", "aircraftcrew", employee, new AircraftCrewRole());
         
         return system;
     }

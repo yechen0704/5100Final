@@ -14,13 +14,30 @@ import java.util.ArrayList;
  */
 public class Flight {
     private String flight_id;
-    private String originalplaceName;
-    private String destinationplaceName;
+    private String originalplace;
+    private String destinationplace;
     private String status;
     private Airplane usedAirplane;
     private String cost;
     private String departureTime;
     private ArrayList<Customer> customerList;
+    private String arrivingTime;
+
+    public ArrayList<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(ArrayList<Customer> customerList) {
+        this.customerList = customerList;
+    }
+
+    public String getArrivingTime() {
+        return arrivingTime;
+    }
+
+    public void setArrivingTime(String arrivingtime) {
+        this.arrivingTime = arrivingtime;
+    }
 
     
     public String getFlight_id() {
@@ -31,20 +48,20 @@ public class Flight {
         this.flight_id = flight_id;
     }
 
-    public String getOriginalplaceName() {
-        return originalplaceName;
+    public String getOriginalplace() {
+        return originalplace;
     }
 
-    public void setOriginalplaceName(String originalplaceName) {
-        this.originalplaceName = originalplaceName;
+    public void setOriginalplace(String originalplaceName) {
+        this.originalplace = originalplaceName;
     }
 
-    public String getDestinationplaceName() {
-        return destinationplaceName;
+    public String getDestinationplace() {
+        return destinationplace;
     }
 
-    public void setDestinationplaceName(String destinationplaceName) {
-        this.destinationplaceName = destinationplaceName;
+    public void setDestinationplace(String destinationplaceName) {
+        this.destinationplace = destinationplaceName;
     }
 
     public String getStatus() {

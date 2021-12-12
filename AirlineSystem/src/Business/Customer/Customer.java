@@ -26,17 +26,13 @@ public class Customer {
         orderList = new ArrayList<Order>();
     }
     
-    public void addOrder(String restaurentName, String customerName, String deliverMan, String cost, String deliveryAddress) {
-        Order order=new Order();
-        order.setOrder_id(String.valueOf(id));
-        order.setCustomerName(customerName);
-        order.setRestaurentName(restaurentName);
-        order.setDeliverMan(deliverMan);
-        order.setCost(cost);
-        order.setDeliveryAddress(deliveryAddress);
-        order.setStatus("New Order");
+    public Order addOrder(Order order){
         orderList.add(order);
-        id++;
+        return order;
+    }
+    
+    public void deleteOrder(Order order){
+        orderList.remove(order);
     }
 
     public String getName() {

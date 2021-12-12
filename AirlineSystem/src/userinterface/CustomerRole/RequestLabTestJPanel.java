@@ -4,15 +4,16 @@
  */
 package userinterface.CustomerRole;
 
+import Business.Airline.Airline;
+import Business.Customer.Customer;
 import Business.EcoSystem;
-import Business.Organization;
+import Business.Order.Order;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,18 +22,17 @@ import javax.swing.JPanel;
 public class RequestLabTestJPanel extends javax.swing.JPanel {
 
     private JPanel mainScreen;
-    
     private UserAccount userAccount;
+    private EcoSystem system;
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestLabTestJPanel(JPanel mainScreen, UserAccount userAccount) {
+    public RequestLabTestJPanel(JPanel mainScreen, UserAccount userAccount, EcoSystem system) {
         initComponents();
-        
         this.mainScreen = mainScreen;
-        
         this.userAccount = userAccount;
-       
+        this.system = system;
+        populateFlt();
     }
 
     /**
@@ -66,26 +66,26 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
 
         tblFlt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Flight_id", "Original Place", "Destination Place", "Airplane_id.", "Cost", "Airline Company"
+                "Flight_id", "Original Place", "Destination Place", "Airplane_id.", "Departure Time", "Arriving Time", "Airplane_id.", "Airline Company", "Order_id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true
+                false, false, false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -98,7 +98,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblFlt);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 680, 230));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 950, 230));
 
         btnDelete.setText("Cancel");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +115,6 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         Component[] componentArray = mainScreen.getComponents();
         Component component = componentArray[componentArray.length - 1];
         CustomerAreaJPanel dwjp = (CustomerAreaJPanel) component;
-        dwjp.populatetblFlt();
         CardLayout layout = (CardLayout)mainScreen.getLayout();
         layout.previous(mainScreen);
 
@@ -123,39 +122,25 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        String address=txtAddress.getText();
-
-        try {
-            if(address==null || address.isEmpty()){
-                throw new NullPointerException("Address field is Empty");
-
-            }else if(address.length()<5){
-                throw new Exception("Please enter valid address ");
-            }
-        } catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "Address is Empty");
-            return;
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(this, " Address is invalid");
-            return;
-        }
-
-        restro.addOrder(restro.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
-        for(Customer cust:system.getCustomerDirectory().getCustList()){
-            if(userAccount.getUsername().equals(cust.getUserName())){
-                cust.addOrder(restro.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
+        int selectedRow = tblFlt.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(this,"Please select a row from the table to cancel","Warning",JOptionPane.WARNING_MESSAGE);
+        }else{
+            for (Airline al : system.getAirlineDirectory().getAirlineList()){
+                for (Order od : al.getOrderList()){
+                    if(od.getOrder_id().equals((String) tblFlt.getValueAt(selectedRow, 6))){
+                        al.deleteOrder(od.toString());
+                        for(Customer cust : system.getCustomerDirectory().getCustList()){
+                                if(cust.getName().equals(userAccount.getName())){
+                                    cust.deleteOrder(od);
+                                }
+                            }
+                    }
+                }
             }
         }
-
-        JOptionPane.showMessageDialog(this,"Your Order is placed","Thank You",JOptionPane.WARNING_MESSAGE);
-        sum=0.0;
-        mainScreen.remove(this);
-        Component[] componentArray = mainScreen.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        CustomerAreaJPanel dwjp = (CustomerAreaJPanel) component;
-        dwjp.populatetblRes();
-        CardLayout layout = (CardLayout)mainScreen.getLayout();
-        layout.previous(mainScreen);
+        populateFlt();
+        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -165,4 +150,24 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblFlt;
     // End of variables declaration//GEN-END:variables
+
+    private void populateFlt() {
+        DefaultTableModel model = (DefaultTableModel) tblFlt.getModel();
+        model.setRowCount(0);
+        for (Airline al : system.getAirlineDirectory().getAirlineList()) {
+            for(Order od : al.getOrderList()){
+                if(od.getCustomerName().equals(userAccount.getName())){
+                    Object[] row = new Object[7];
+                    row[0] = od.getFlight_id();
+                    row[1] = od.getOriginalplace();
+                    row[2] = od.getDestinationplace();
+                    row[3] = od.getAirplane_id();
+                    row[4] = od.getCost();
+                    row[5] = al;
+                    row[6] = od.getOrder_id();
+                    model.addRow(row);
+                }
+            }
+        }
+    }
 }

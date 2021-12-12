@@ -7,6 +7,7 @@ package Business.Airline;
 
 import Business.Order.Order;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  *
@@ -19,6 +20,14 @@ public class Airline {
     private ArrayList<Order> orderList;
     private String name;
 
+    public ArrayList<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(ArrayList<Order> orderList) {
+        this.orderList = orderList;
+    }
+
     public ArrayList<Flight> getFlightList() {
         return flightList;
     }
@@ -30,8 +39,8 @@ public class Airline {
     public void addFlight(String id, String originalplaceName, String destinationplaceName, Airplane airplane, String cost) {
         Flight flight = new Flight();
         flight.setFlight_id(id);
-        flight.setOriginalplaceName(originalplaceName);
-        flight.setDestinationplaceName(destinationplaceName);
+        flight.setOriginalplace(originalplaceName);
+        flight.setDestinationplace(destinationplaceName);
         flight.setCost(cost);
         flight.setStatus("New Flight");
         flightList.add(flight);
@@ -72,8 +81,40 @@ public class Airline {
         this.name = name;
     }
     
+    public Order addOrder(String customerName, String flight_id, String originalplace, String destinationplace, String departureTime, String arrivingTime, String airplane_id, String cost, String airline, boolean insurance){
+        Order order = new Order();
+        order.setFlight_id(flight_id);
+        order.setOriginalplace(originalplace);
+        order.setDestinationplace(destinationplace);
+        order.setAirplane_id(airplane_id);
+        order.setDepartureTime(departureTime);
+        order.setArrivingTime(arrivingTime);
+        order.setCost(cost);
+        order.setAirline(airline);
+        order.setInsurance(insurance);
+        order.setCustomerName(customerName);
+        order.setOrder_id(getUUID());
+        orderList.add(order);
+        return order;
+    }
+    
+    public String getUUID(){
+        UUID uuid=UUID.randomUUID();
+        String str = uuid.toString(); 
+        String uuidStr=str.replace("-", "");
+        return uuidStr;
+      }
+    
+    public void deleteOrder(String order_id){
+        for(Order od: orderList){
+            if(od.getOrder_id().equals(order_id)){
+                orderList.remove(od);
+            }
+        }
+    }
+    
     @Override
     public String toString() {
-        return adminUName;
+        return name;
     }
 }
