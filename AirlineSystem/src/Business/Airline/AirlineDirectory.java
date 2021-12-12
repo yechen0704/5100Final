@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class AirlineDirectory {
      private ArrayList<Airline> airlineList;
     private Airline airline;
-    private Airplane menu;
+    private Airplane airplane;
     public AirlineDirectory(){
         this.airlineList=new ArrayList<Airline>();
     }
@@ -42,19 +42,17 @@ public class AirlineDirectory {
         }
     }
     
-    public void updateRestaurantInfo(Airline airline,String name,String number,String address){
+    public void updateAirlineInfo(Airline airline,String name){
         airline.setName(name);
-        airline.setAddress(address);
-        airline.setNumber(number);
     }
     
-    public Airplane AddMenuDishes(Airline airline,String id,int capacity){
-        menu=new Airplane(id, capacity);
-        airline.addDishes(menu);
-        return menu;
+    public Airplane AddAirplane(Airline airline,String id,int capacity, String status){
+        airplane=new Airplane(id, capacity, status);
+        airline.addAirplane(airplane);
+        return airplane;
     }
     
-    public void DeleteDish(Airline restro,Airplane menu){
-        restro.removeDishes(menu);
+    public void DeleteDish(Airline restro,Airplane airplane){
+        restro.removeAirplane(airplane);
     }
 }

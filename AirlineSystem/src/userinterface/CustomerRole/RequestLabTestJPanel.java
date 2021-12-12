@@ -43,67 +43,234 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        requestTestJButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        messageJTextField = new javax.swing.JTextField();
-        backJButton = new javax.swing.JButton();
-        valueLabel = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
+        btnAdd = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblMenu = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblCart = new javax.swing.JTable();
+        btnRemove = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JTextField();
+        enterpriseLabel1 = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        btnOrder = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        requestTestJButton.setText("Request Test");
-        requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                requestTestJButtonActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 95, -1, -1));
-
-        jLabel1.setText("Message");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 40, -1, -1));
-        add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 37, 89, -1));
-
-        backJButton.setText("<<Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 138, -1, -1));
-
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 130, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("EnterPrise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 30));
+        enterpriseLabel.setText("Order Your Flight:");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 170, 30));
+
+        btnAdd.setText("Add to Cart");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, -1));
+
+        tblMenu.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Dish Name", "Description", "Amount", "Energy( Kcal) "
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblMenu);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 480, 120));
+
+        tblCart.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Dish Name", "Description", "Amount"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblCart);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, 120));
+
+        btnRemove.setText("Remove From Cart");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
+        add(btnRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, -1, 30));
+
+        jLabel2.setText("Total(in USD): ");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, 90, 20));
+
+        txtTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalActionPerformed(evt);
+            }
+        });
+        add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 80, 20));
+
+        enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        enterpriseLabel1.setText("Address:");
+        add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 50, 20));
+        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 170, -1));
+
+        btnOrder.setText("Order");
+        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrderActionPerformed(evt);
+            }
+        });
+        add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 110, 40));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
-        
-        
-        
-    }//GEN-LAST:event_requestTestJButtonActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
+        mainScreen.remove(this);
+        Component[] componentArray = mainScreen.getComponents();
         Component component = componentArray[componentArray.length - 1];
         CustomerAreaJPanel dwjp = (CustomerAreaJPanel) component;
-        dwjp.populateRequestTable();
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-        
-    }//GEN-LAST:event_backJButtonActionPerformed
+        dwjp.populatetblRes();
+        CardLayout layout = (CardLayout)mainScreen.getLayout();
+        layout.previous(mainScreen);
+
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+
+        int selectedRow = tblMenu.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(this,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            Dish item=(Dish)tblMenu.getValueAt(selectedRow, 0);
+            populatetblCart(item);
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblCart.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(this,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
+        }else{
+            Dish item=(Dish)tblCart.getValueAt(selectedRow, 0);
+            items.remove(item);
+            sum=sum-item.getPrice();
+            DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
+            model.setRowCount(0);
+            Object[] row = new Object[3];
+            for(Dish dish:items){
+                row[0] = dish;
+                row[1] = dish.getDescription();
+                row[2] = dish.getPrice();
+                model.addRow(row);
+            }
+
+        }
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalActionPerformed
+
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+        // TODO add your handling code here:
+        String address=txtAddress.getText();
+
+        try {
+            if(address==null || address.isEmpty()){
+                throw new NullPointerException("Address field is Empty");
+
+            }else if(address.length()<5){
+                throw new Exception("Please enter valid address ");
+            }
+        } catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Address is Empty");
+            return;
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, " Address is invalid");
+            return;
+        }
+
+        restro.addOrder(restro.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
+        for(Customer cust:system.getCustomerDirectory().getCustList()){
+            if(userAccount.getUsername().equals(cust.getUserName())){
+                cust.addOrder(restro.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
+            }
+        }
+
+        JOptionPane.showMessageDialog(this,"Your Order is placed","Thank You",JOptionPane.WARNING_MESSAGE);
+        sum=0.0;
+        mainScreen.remove(this);
+        Component[] componentArray = mainScreen.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        CustomerAreaJPanel dwjp = (CustomerAreaJPanel) component;
+        dwjp.populatetblRes();
+        CardLayout layout = (CardLayout)mainScreen.getLayout();
+        layout.previous(mainScreen);
+    }//GEN-LAST:event_btnOrderActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnOrder;
+    private javax.swing.JButton btnRemove;
     private javax.swing.JLabel enterpriseLabel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField messageJTextField;
-    private javax.swing.JButton requestTestJButton;
-    private javax.swing.JLabel valueLabel;
+    private javax.swing.JLabel enterpriseLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblCart;
+    private javax.swing.JTable tblMenu;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
