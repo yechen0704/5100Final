@@ -27,15 +27,25 @@ public class CustomerDirectory {
         this.customerList = new ArrayList<Customer>();
     }
     
-    public Customer createCustomer(String uName, String ppn, String tn){
-        customer= new Customer(uName, ppn, tn);
+    public Customer createCustomer(String name, String ppn, String tn){
+        customer= new Customer(name, ppn, tn);
         customerList.add(customer);
         return customer;
     }
     
-    public void deleteCustomer(String username){
+    public void updateCustomer(String name, String cname, String ppn, String tn){
         for(int i = 0;i < customerList.size(); i++){
-            if(customerList.get(i).getUserName().equals(username)){
+            if(customerList.get(i).getName().equals(name)){
+                customerList.get(i).setName(cname);
+                customerList.get(i).setPassportNum(ppn);
+                customerList.get(i).setTelNum(tn);
+            }
+        }
+    }
+    
+    public void deleteCustomer(String name){
+        for(int i = 0;i < customerList.size(); i++){
+            if(customerList.get(i).getName().equals(name)){
                 customerList.remove(i);
             }
         }

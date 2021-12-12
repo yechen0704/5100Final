@@ -47,8 +47,8 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblFlight = new javax.swing.JTable();
-        btnOrder = new javax.swing.JButton();
+        tblFlt = new javax.swing.JTable();
+        btnDelete = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -61,10 +61,10 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("Order Your Flight:");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 170, 30));
+        enterpriseLabel.setText("View Your Flight:");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 170, 30));
 
-        tblFlight.setModel(new javax.swing.table.DefaultTableModel(
+        tblFlt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -96,17 +96,17 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblFlight);
+        jScrollPane2.setViewportView(tblFlt);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 680, 230));
 
-        btnOrder.setText("Order");
-        btnOrder.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Cancel");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrderActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
-        add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 190, 40));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 190, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -121,7 +121,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         String address=txtAddress.getText();
 
@@ -156,13 +156,13 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         dwjp.populatetblRes();
         CardLayout layout = (CardLayout)mainScreen.getLayout();
         layout.previous(mainScreen);
-    }//GEN-LAST:event_btnOrderActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnOrder;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblFlight;
+    private javax.swing.JTable tblFlt;
     // End of variables declaration//GEN-END:variables
 }

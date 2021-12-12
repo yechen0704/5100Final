@@ -59,6 +59,8 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         txtTn = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtName = new javax.swing.JPasswordField();
 
         jLabel4.setText("Password:");
 
@@ -102,26 +104,26 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
 
         tblCustomer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "User Name", "Password", "Passport Num", "Tel Num"
+                "User Name", "Password", "Name", "Passport Num", "Tel Num"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -151,6 +153,14 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
 
         jLabel7.setText("Passport Number:");
 
+        jLabel8.setText("Name:");
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,14 +175,15 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel5)))
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel5))
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPpn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,7 +197,7 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
                         .addComponent(btnDelete)))
                 .addGap(23, 23, 23))
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(72, 72, 72)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCreate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -201,6 +212,14 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
                 .addComponent(backJButton)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnUpdate)
+                            .addComponent(btnDelete))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(txtOption)
                         .addGap(26, 26, 26)
@@ -213,6 +232,10 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPpn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -220,19 +243,12 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtTn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUpdate)
-                            .addComponent(btnDelete))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6))
+                        .addGap(35, 35, 35)))
                 .addComponent(btnCreate)
                 .addGap(18, 18, 18)
                 .addComponent(btnConfirm)
-                .addGap(79, 79, 79))
+                .addGap(59, 59, 59))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -250,6 +266,13 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             userAccount=system.getUserAccountDirectory().authenticateUser(username, pwd);
             txtUsername.setText(userAccount.getUsername()+"");
             txtPwd.setText(userAccount.getPassword()+"");
+            txtName.setText(userAccount.getName()+"");
+            for(int i = 0;i < system.getCustomerDirectory().getCustList().size(); i++){
+                    if(system.getCustomerDirectory().getCustList().get(i).getName().equals(userAccount.getName())){
+                        txtPpn.setText(system.getCustomerDirectory().getCustList().get(i).getPassportNum()+"");
+                        txtTn.setText(system.getCustomerDirectory().getCustList().get(i).getTelNum()+"");
+                    }
+            }
             // system.getUserAccountDirectory().deleteUserAccount(user);
 
         }
@@ -271,7 +294,7 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             String pwd= (String) tblCustomer.getValueAt(selectedRow, 1);
             UserAccount user=system.getUserAccountDirectory().authenticateUser(username, pwd);
             system.getUserAccountDirectory().deleteUserAccount(user);
-            system.getCustomerDirectory().deleteCustomer(user.getUsername());
+            system.getCustomerDirectory().deleteCustomer((String) tblCustomer.getValueAt(selectedRow, 2));
         }else{
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
         }
@@ -283,12 +306,15 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
 
         String uname=txtUsername.getText();
         String password=txtPwd.getText();
+        String name = txtName.getText();
         String ppn = txtPpn.getText();
         String tn = txtTn.getText();
         if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
             JOptionPane.showMessageDialog(null,"  User Name already exists ");
         }else{
             system.getUserAccountDirectory().updateUserAccount(userAccount,uname,password);
+            int selectedRow = tblCustomer.getSelectedRow();
+            system.getCustomerDirectory().updateCustomer((String) tblCustomer.getValueAt(selectedRow,2),name, ppn, tn);
             populateTblCustomer();
             btnCreate.setEnabled(true);
             btnDelete.setEnabled(true);
@@ -297,6 +323,9 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
 
             txtUsername.setText("");
             txtPwd.setText("");
+            txtName.setText("");
+            txtPpn.setText("");
+            txtTn.setText("");
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
@@ -314,12 +343,13 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
 
         String uname=txtUsername.getText();
         String password=txtPwd.getText();
+        String name = txtName.getText();
         String ppn = txtPpn.getText();
         String tn = txtTn.getText();
         if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
             JOptionPane.showMessageDialog(this,"It is already existed.");
         }else{
-            UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(uname,password,new CustomerRole());
+            UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(name, uname,password,new CustomerRole());
             Customer cust= system.getCustomerDirectory().createCustomer(uname, ppn, tn);
             populateTblCustomer();
             txtUsername.setText("");
@@ -333,6 +363,10 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTnActionPerformed
 
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
@@ -344,8 +378,10 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblCustomer;
+    private javax.swing.JPasswordField txtName;
     private javax.swing.JLabel txtOption;
     private javax.swing.JTextField txtPpn;
     private javax.swing.JPasswordField txtPwd;
@@ -358,9 +394,17 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
             if ("Business.Role.CustomerRole".equals(user.getRole().toString())) {
-                Object[] row = new Object[2];
+                Object[] row = new Object[5];
                 row[0] = user.getUsername();
                 row[1] = user.getPassword();
+                for(int i = 0;i < system.getCustomerDirectory().getCustList().size(); i++){
+                    if(system.getCustomerDirectory().getCustList().get(i).getName().equals(user.getName())){
+                        row[2] = user.getName();
+                        row[3] = system.getCustomerDirectory().getCustList().get(i).getPassportNum();
+                        row[4] = system.getCustomerDirectory().getCustList().get(i).getTelNum();
+                    }
+                }
+                
                 model.addRow(row);
             }
         }

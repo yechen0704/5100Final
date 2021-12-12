@@ -20,7 +20,7 @@ public abstract class Role {
         AirlineAdmin("AirlineAdmin"),
         Customer("Customer"),
         Ackemma("Ackemma"),
-        Compensator("Compensator"),
+        MOP("MOP"),
         Seller("Seller"),
         AircraftCrew("AircraftCrew"),
         Commander("Commander"),
@@ -52,6 +52,8 @@ public abstract class Role {
     public abstract JPanel createWorkArea(JPanel userProcessContainer, 
             UserAccount account,  
             EcoSystem business);
+    
+    
 
     @Override
     public String toString() {

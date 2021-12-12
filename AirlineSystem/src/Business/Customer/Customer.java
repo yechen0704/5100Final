@@ -14,13 +14,13 @@ import java.util.ArrayList;
  */
 public class Customer {
     int id=101;
-    private String UserName;
+    private String Name;
     private ArrayList<Order> orderList;
     private String passportNum;
     private String telNum;
     
-    public Customer(String username, String ppn, String tn){
-        this.UserName = username;
+    public Customer(String name, String ppn, String tn){
+        this.Name = name;
         this.passportNum = ppn;
         this.telNum = tn;
         orderList = new ArrayList<Order>();
@@ -39,12 +39,12 @@ public class Customer {
         id++;
     }
 
-    public String getUserName() {
-        return UserName;
+    public String getName() {
+        return Name;
     }
 
-    public void setUserName(String UserName) {
-        this.UserName = UserName;
+    public void setName(String UserName) {
+        this.Name = UserName;
     }
 
     public ArrayList<Order> getOrderList() {

@@ -5,6 +5,9 @@
  */
 package Business.Airline;
 
+import Business.Customer.Customer;
+import java.util.ArrayList;
+
 /**
  *
  * @author 刘欣卓
@@ -17,7 +20,9 @@ public class Flight {
     private Airplane usedAirplane;
     private String cost;
     private String departureTime;
+    private ArrayList<Customer> customerList;
 
+    
     public String getFlight_id() {
         return flight_id;
     }

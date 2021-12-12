@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.CompensatorRole;
+package userinterface.MOPRole;
 
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  *
  * @author 刘欣卓
  */
-public class CompensatorWorkAreaJPanel extends javax.swing.JPanel {
+public class MOPWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form CompensatorWorkAreaJPanel
@@ -21,7 +21,7 @@ public class CompensatorWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel mainScreen;
     private UserAccount userAccount;
     private EcoSystem system;
-    public CompensatorWorkAreaJPanel(JPanel mainScreen, UserAccount userAccount, EcoSystem system) {
+    public MOPWorkAreaJPanel(JPanel mainScreen, UserAccount userAccount, EcoSystem system) {
         initComponents();
         this.mainScreen = mainScreen;
         this.userAccount = userAccount;
