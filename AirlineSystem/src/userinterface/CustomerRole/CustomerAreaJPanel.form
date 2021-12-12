@@ -94,10 +94,10 @@
                 <Column editable="false" title="Original Place" type="java.lang.String"/>
                 <Column editable="false" title="Destination Place" type="java.lang.String"/>
                 <Column editable="false" title="Departure time" type="java.lang.Integer"/>
-                <Column editable="true" title="Arriving time" type="java.lang.Object"/>
-                <Column editable="true" title="Airplane_id." type="java.lang.Object"/>
-                <Column editable="true" title="Cost" type="java.lang.Object"/>
-                <Column editable="true" title="Airline Company" type="java.lang.Object"/>
+                <Column editable="false" title="Arriving time" type="java.lang.Object"/>
+                <Column editable="false" title="Airplane_id." type="java.lang.Object"/>
+                <Column editable="false" title="Cost" type="java.lang.Object"/>
+                <Column editable="false" title="Airline Company" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

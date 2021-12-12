@@ -4,6 +4,7 @@
  */
 package userinterface;
 
+import Business.ConfigureASystem;
 import Business.EcoSystem;
 import Business.DB4OUtil.DB4OUtil;
 import Business.UserAccount.UserAccount;
@@ -25,6 +26,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     public MainJFrame() {
         initComponents();
+//        system = ConfigureASystem.configure();
         system = dB4OUtil.retrieveSystem();
         this.setSize(1680, 1050);
     }

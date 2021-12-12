@@ -66,9 +66,8 @@ public class Airline {
         this.adminUName = adminUName;
     }
     
-    public Airline(String Name, String UName) {
+    public Airline(String Name) {
         this.name = Name;
-        this.adminUName=UName;
         airplaneList=new ArrayList<Airplane>();
         flightList=new ArrayList<Flight>();
     }

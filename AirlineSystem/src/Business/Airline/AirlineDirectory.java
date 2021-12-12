@@ -27,8 +27,8 @@ public class AirlineDirectory {
         this.airlineList = airlineList;
     }
     
-    public Airline createAirlineInfo(String Name, String uName){
-        airline= new Airline(Name, uName);
+    public Airline createAirlineInfo(String Name){
+        airline= new Airline(Name);
         airlineList.add(airline);
         
         return airline;

@@ -64,7 +64,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblSelectedNode = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnManageAA = new javax.swing.JButton();
         btnCustomer = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
@@ -97,7 +97,12 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         lblSelectedNode.setText("<View_selected_node>");
 
-        jButton1.setText("Manage AirlineAdmin");
+        btnManageAA.setText("Manage AirlineAdmin");
+        btnManageAA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageAAActionPerformed(evt);
+            }
+        });
 
         btnCustomer.setText("Manage Customer");
         btnCustomer.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +121,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCustomer)
-                    .addComponent(jButton1)
+                    .addComponent(btnManageAA)
                     .addComponent(lblSelectedNode))
                 .addContainerGap(253, Short.MAX_VALUE))
         );
@@ -128,7 +133,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(lblSelectedNode))
                 .addGap(79, 79, 79)
-                .addComponent(jButton1)
+                .addComponent(btnManageAA)
                 .addGap(18, 18, 18)
                 .addComponent(btnCustomer)
                 .addContainerGap(212, Short.MAX_VALUE))
@@ -155,10 +160,18 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(mainScreen);
     }//GEN-LAST:event_btnCustomerActionPerformed
 
+    private void btnManageAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAAActionPerformed
+        // TODO add your handling code here:
+        ManageAirlineAdminJPanel maajp = new ManageAirlineAdminJPanel(mainScreen,system);
+        mainScreen.add("ManageAirlineAdminJPanel", maajp);
+        CardLayout layout = (CardLayout) mainScreen.getLayout();
+        layout.next(mainScreen);
+    }//GEN-LAST:event_btnManageAAActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCustomer;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnManageAA;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

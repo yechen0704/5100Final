@@ -37,11 +37,11 @@
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtName" min="-2" pref="144" max="-2" attributes="0"/>
                           <Component id="txtUsername" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
                           <Component id="txtPwd" min="-2" pref="144" max="-2" attributes="0"/>
                           <Component id="txtPpn" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
-                          <Component id="txtTn" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
+                          <Component id="txtName" min="-2" pref="144" max="-2" attributes="0"/>
+                          <Component id="txtTn" min="-2" pref="144" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -113,8 +113,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtTn" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
@@ -251,11 +251,6 @@
         <Property name="text" type="java.lang.String" value="Tel Number:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="txtTn">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTnActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="text" type="java.lang.String" value="Passport Number:"/>
@@ -266,10 +261,9 @@
         <Property name="text" type="java.lang.String" value="Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="txtName">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JTextField" name="txtName">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTn">
     </Component>
   </SubComponents>
 </Form>
