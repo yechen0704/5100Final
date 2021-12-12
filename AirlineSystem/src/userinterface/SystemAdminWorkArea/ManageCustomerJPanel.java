@@ -13,6 +13,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -263,9 +264,9 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             system.getUserAccountDirectory().updateUserAccount(userAccount,uname,password);
             populateTblCustomer();
             btnCreate.setEnabled(true);
-            deleteBtn.setEnabled(true);
-            updateBtn.setEnabled(true);
-            ConfirmBtn.setEnabled(false);
+            btnDelete.setEnabled(true);
+            btnUpdate.setEnabled(true);
+            btnConfirm.setEnabled(false);
 
             txtUsername.setText("");
             txtPwd.setText("");
@@ -313,4 +314,17 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtPwd;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTblCustomer() {
+        DefaultTableModel model = (DefaultTableModel) tblCustomer.getModel();
+        model.setRowCount(0);
+        for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
+            if ("Business.Role.CustomerRole".equals(user.getRole().toString())) {
+                Object[] row = new Object[2];
+                row[0] = user.getUsername();
+                row[1] = user.getPassword();
+                model.addRow(row);
+            }
+        }
+    }
 }

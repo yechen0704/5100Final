@@ -19,23 +19,17 @@ import javax.swing.table.DefaultTableModel;
 public class CustomerAreaJPanel extends javax.swing.JPanel {
 
     private JPanel mainScreen;
-    private EcoSystem system;
     private UserAccount userAccount;
+    private EcoSystem system;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
     public CustomerAreaJPanel(JPanel mainScreen, UserAccount userAccount, EcoSystem system) {
         initComponents();
-        
         this.mainScreen = mainScreen;
-      
         this.userAccount = userAccount;
-        //valueLabel.setText(enterprise.getName());
-        populateRequestTable();
-    }
-    
-    public void populateRequestTable(){
-        
+        this.system = system;
+        populatetblRes();
     }
 
     
@@ -155,8 +149,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
 
     private void refreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTestJButtonActionPerformed
 
-        populateRequestTable();
-        
+        populatetblRes();
     }//GEN-LAST:event_refreshTestJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -167,4 +160,8 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
+
+    private void populatetblRes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
