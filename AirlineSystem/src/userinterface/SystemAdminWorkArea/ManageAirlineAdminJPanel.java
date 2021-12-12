@@ -5,9 +5,10 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.Airline.Airline;
 import Business.EcoSystem;
-import Business.Restaurant.Restaurant;
 import Business.Role.AdminRole;
+import Business.Role.AirlineAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -341,9 +342,9 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
         if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
             JOptionPane.showMessageDialog(this,"It is already existing ");
         }else{
-            UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(name, uname, password, new AdminRole());
-            Restaurant restro= system.getRestaurantDirectory().createRestaurantInfo(name,uname);
-            populatetblRes();
+            UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(name, uname, password, new AirlineAdminRole());
+            Airline airline= system.getAirlineDirectory().createAirlineInfo(name,uname);
+            populatetblAla();
             txtUsername.setText("");
             txtPwd.setText("");
         }
@@ -376,8 +377,8 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
             String pwd= (String) tblRes.getValueAt(selectedRow, 2);
             UserAccount user=system.getUserAccountDirectory().authenticateUser(username, pwd);
             system.getUserAccountDirectory().deleteUserAccount(user);
-            system.getRestaurantDirectory().deleteRestaurent(user.getUsername());
-            populatetblRes();
+            system.getAirlineDirectory().deleteAirline(user.getUsername());
+            populatetblAla();
         }else{
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
         }
@@ -394,7 +395,7 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"  User Name already exists ");
         }else{
             system.getUserAccountDirectory().updateUserAccount(name,userAccount,uname,password);
-            populatetblRes();
+            populatetblAla();
             btnCreate.setEnabled(true);
             btnDelete.setEnabled(true);
             btnUpdate.setEnabled(true);
@@ -428,7 +429,7 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"It is already existing ");
         }else{
             UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(name, uname, password, new AdminRole());
-            Restaurant restro= system.getRestaurantDirectory().createRestaurantInfo(name,uname);
+            Airline airline= system.getAirlineDirectory().createAirlineInfo(name,uname);
             populatetblAla();
             txtUsername.setText("");
             txtPwd.setText("");
@@ -462,7 +463,7 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
             String pwd= (String) tblRes.getValueAt(selectedRow, 2);
             UserAccount user=system.getUserAccountDirectory().authenticateUser(username, pwd);
             system.getUserAccountDirectory().deleteUserAccount(user);
-            system.getRestaurantDirectory().deleteRestaurent(user.getUsername());
+            system.getAirlineDirectory().deleteAirline(user.getUsername());
             populatetblAla();
         }else{
             JOptionPane.showMessageDialog(null, "Please select a Row!!");

@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.DeliveryManRole;
+package userinterface.AircraftCrewRole;
 
 import Business.EcoSystem;
+import Business.Order.Order;
 
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
@@ -65,14 +66,14 @@ public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
+        tblDm = new javax.swing.JTable();
         assignJButton = new javax.swing.JButton();
         processJButton = new javax.swing.JButton();
         refreshJButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+        tblDm.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -98,12 +99,12 @@ public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(workRequestJTable);
-        if (workRequestJTable.getColumnModel().getColumnCount() > 0) {
-            workRequestJTable.getColumnModel().getColumn(0).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(1).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(2).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
+        jScrollPane1.setViewportView(tblDm);
+        if (tblDm.getColumnModel().getColumnCount() > 0) {
+            tblDm.getColumnModel().getColumn(0).setResizable(false);
+            tblDm.getColumnModel().getColumn(1).setResizable(false);
+            tblDm.getColumnModel().getColumn(2).setResizable(false);
+            tblDm.getColumnModel().getColumn(3).setResizable(false);
         }
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 58, 375, 96));
@@ -135,13 +136,13 @@ public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
 
-        int selectedRow = workRequestJTable.getSelectedRow();
+        int selectedRow = tblDm.getSelectedRow();
         
         if (selectedRow < 0){
             return;
         }
         
-        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        WorkRequest request = (WorkRequest)tblDm.getValueAt(selectedRow, 0);
         request.setReceiver(userAccount);
         request.setStatus("Pending");
         populateTable();
@@ -175,6 +176,6 @@ public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton processJButton;
     private javax.swing.JButton refreshJButton;
-    private javax.swing.JTable workRequestJTable;
+    private javax.swing.JTable tblDm;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,7 +5,7 @@
  */
 package Business.Order;
 
-import Business.Restaurant.Dish;
+import Business.Airline.Airplane;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +17,7 @@ public class Order {
     private String restaurentName;
     private String customerName;
     private String deliverMan;
-    private ArrayList<Dish> Order;
+    private ArrayList<Airplane> Order;
     private String cost;
     private String status;
     private String deliveryAddress;
@@ -77,18 +77,18 @@ public class Order {
         this.deliverMan = deliverMan;
     }
 
-    public ArrayList<Dish> getOrder() {
+    public ArrayList<Airplane> getOrder() {
         return Order;
     }
 
-    public void setOrder(ArrayList<Dish> Order) {
+    public void setOrder(ArrayList<Airplane> Order) {
         this.Order = Order;
     }
-
+    
     public String getCost() {
         return cost;
     }
-
+    
     public void setCost(String cost) {
         this.cost = cost;
     }
