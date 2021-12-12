@@ -83,7 +83,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnCustomer" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnManageAA" min="-2" max="-2" attributes="0"/>
                           <Component id="lblSelectedNode" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="253" max="32767" attributes="0"/>
@@ -99,7 +99,7 @@
                           <Component id="lblSelectedNode" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnManageAA" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnCustomer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="212" max="32767" attributes="0"/>
@@ -118,10 +118,13 @@
                 <Property name="text" type="java.lang.String" value="&lt;View_selected_node&gt;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btnManageAA">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manage AirlineAdmin"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageAAActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnCustomer">
               <Properties>

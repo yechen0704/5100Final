@@ -38,22 +38,6 @@ public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     public void populateTable(){
-        DefaultTableModel model = (DefaultTableModel) tblDm.getModel();
-        model.setRowCount(0);
-        for(DeliveryMan deliveryMan : system.getDeliveryManDirectory().getDeliveryManList()){
-            if(deliveryMan.getUserName().equals(userAccount.getUsername())){
-                for(Order order : deliveryMan.getOrderList()){
-                    Object[] row = new Object[6];
-                    row[0] = order;
-                    row[1] = order.getRestaurentName();
-                    row[2] = order.getCustomerName();
-                    row[3] = order.getDeliveryAddress();
-                    row[4] = order.getCost();
-                    row[5] = order.getStatus();
-                    model.addRow(row);
-                }
-            }
-        }
     }
 
     /**
@@ -107,7 +91,7 @@ public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
             tblDm.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 58, 375, 96));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 375, 96));
 
         assignJButton.setText("Assign to me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +99,7 @@ public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
                 assignJButtonActionPerformed(evt);
             }
         });
-        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 215, -1, -1));
+        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
 
         processJButton.setText("Process");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +107,7 @@ public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 215, -1, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, -1, -1));
 
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +115,7 @@ public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
                 refreshJButtonActionPerformed(evt);
             }
         });
-        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 26, -1, -1));
+        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed

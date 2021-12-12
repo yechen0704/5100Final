@@ -102,7 +102,7 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         mainScreen.remove(this);
         Component[] componentArray = mainScreen.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        DeliveryManWorkAreaJPanel dwjp = (DeliveryManWorkAreaJPanel) component;
+        AircraftCrewWorkAreaJPanel dwjp = (AircraftCrewWorkAreaJPanel) component;
         dwjp.populateTable();
         CardLayout layout = (CardLayout) mainScreen.getLayout();
         layout.previous(mainScreen);
