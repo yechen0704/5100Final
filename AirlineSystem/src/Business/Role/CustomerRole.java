@@ -4,6 +4,7 @@
  */
 package Business.Role;
 
+import Business.Airline.Airline;
 import Business.EcoSystem;
 
 import Business.Organization;

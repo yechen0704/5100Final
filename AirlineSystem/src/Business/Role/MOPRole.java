@@ -8,23 +8,22 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.CompensatorRole.CompensatorWorkAreaJPanel;
-import userinterface.CustomerRole.CustomerAreaJPanel;
+import userinterface.MOPRole.MOPWorkAreaJPanel;
 
 /**
  *
  * @author 刘欣卓
  */
-public class CompensatorRole extends Role{
+public class MOPRole extends Role{
     
-    public CompensatorRole(){
-        this.type = RoleType.Compensator;
+    public MOPRole(){
+        this.type = RoleType.MOP;
     }
     
     @Override
     public JPanel createWorkArea(JPanel mainScreen, UserAccount userAccount, EcoSystem system) {
-        this.type = RoleType.Compensator;
-        return new CompensatorWorkAreaJPanel(mainScreen, userAccount, system);
+        this.type = RoleType.MOP;
+        return new MOPWorkAreaJPanel(mainScreen, userAccount, system);
     }
     
 }
