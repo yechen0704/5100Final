@@ -16,6 +16,7 @@ public class Flight {
     private String status;
     private Airplane usedAirplane;
     private String cost;
+    private String departureTime;
 
     public String getFlight_id() {
         return flight_id;
@@ -63,6 +64,14 @@ public class Flight {
 
     public void setCost(String cost) {
         this.cost = cost;
+    }
+
+    public String getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
     }
     
     @Override

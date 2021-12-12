@@ -19,18 +19,18 @@ import javax.swing.JPanel;
  */
 public class RequestLabTestJPanel extends javax.swing.JPanel {
 
-    private JPanel userProcessContainer;
+    private JPanel mainScreen;
     
     private UserAccount userAccount;
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestLabTestJPanel(JPanel userProcessContainer, UserAccount account) {
+    public RequestLabTestJPanel(JPanel mainScreen, UserAccount userAccount) {
         initComponents();
         
-        this.userProcessContainer = userProcessContainer;
+        this.mainScreen = mainScreen;
         
-        this.userAccount = account;
+        this.userAccount = userAccount;
        
     }
 
@@ -45,16 +45,8 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
 
         btnBack = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
-        btnAdd = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblMenu = new javax.swing.JTable();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblCart = new javax.swing.JTable();
-        btnRemove = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        txtTotal = new javax.swing.JTextField();
-        enterpriseLabel1 = new javax.swing.JLabel();
-        txtAddress = new javax.swing.JTextField();
+        tblFlight = new javax.swing.JTable();
         btnOrder = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,30 +63,28 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         enterpriseLabel.setText("Order Your Flight:");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 170, 30));
 
-        btnAdd.setText("Add to Cart");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-        add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, -1));
-
-        tblMenu.setModel(new javax.swing.table.DefaultTableModel(
+        tblFlight.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Dish Name", "Description", "Amount", "Energy( Kcal) "
+                "Flight_id", "Original Place", "Destination Place", "Airplane_id.", "Cost", "Airline Company"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -105,62 +95,9 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblMenu);
+        jScrollPane2.setViewportView(tblFlight);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 480, 120));
-
-        tblCart.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Dish Name", "Description", "Amount"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblCart);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, 120));
-
-        btnRemove.setText("Remove From Cart");
-        btnRemove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveActionPerformed(evt);
-            }
-        });
-        add(btnRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, -1, 30));
-
-        jLabel2.setText("Total(in USD): ");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 400, 90, 20));
-
-        txtTotal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTotalActionPerformed(evt);
-            }
-        });
-        add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, 80, 20));
-
-        enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        enterpriseLabel1.setText("Address:");
-        add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 50, 20));
-        add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 170, -1));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 680, 230));
 
         btnOrder.setText("Order");
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +105,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
                 btnOrderActionPerformed(evt);
             }
         });
-        add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 110, 40));
+        add(btnOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 190, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -177,49 +114,11 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         Component[] componentArray = mainScreen.getComponents();
         Component component = componentArray[componentArray.length - 1];
         CustomerAreaJPanel dwjp = (CustomerAreaJPanel) component;
-        dwjp.populatetblRes();
+        dwjp.populatetblFlt();
         CardLayout layout = (CardLayout)mainScreen.getLayout();
         layout.previous(mainScreen);
 
     }//GEN-LAST:event_btnBackActionPerformed
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-
-        int selectedRow = tblMenu.getSelectedRow();
-        if(selectedRow<0){
-            JOptionPane.showMessageDialog(this,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
-        }
-        else{
-            Dish item=(Dish)tblMenu.getValueAt(selectedRow, 0);
-            populatetblCart(item);
-        }
-    }//GEN-LAST:event_btnAddActionPerformed
-
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblCart.getSelectedRow();
-        if(selectedRow<0){
-            JOptionPane.showMessageDialog(this,"Please select a row from the table to view details","Warning",JOptionPane.WARNING_MESSAGE);
-        }else{
-            Dish item=(Dish)tblCart.getValueAt(selectedRow, 0);
-            items.remove(item);
-            sum=sum-item.getPrice();
-            DefaultTableModel model = (DefaultTableModel) tblCart.getModel();
-            model.setRowCount(0);
-            Object[] row = new Object[3];
-            for(Dish dish:items){
-                row[0] = dish;
-                row[1] = dish.getDescription();
-                row[2] = dish.getPrice();
-                model.addRow(row);
-            }
-
-        }
-    }//GEN-LAST:event_btnRemoveActionPerformed
-
-    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTotalActionPerformed
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
         // TODO add your handling code here:
@@ -259,18 +158,10 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnOrderActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnOrder;
-    private javax.swing.JButton btnRemove;
     private javax.swing.JLabel enterpriseLabel;
-    private javax.swing.JLabel enterpriseLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblCart;
-    private javax.swing.JTable tblMenu;
-    private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtTotal;
+    private javax.swing.JTable tblFlight;
     // End of variables declaration//GEN-END:variables
 }
