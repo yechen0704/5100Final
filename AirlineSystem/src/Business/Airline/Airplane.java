@@ -12,10 +12,12 @@ package Business.Airline;
 public class Airplane {
     private String id;
     private int capacity;
+    private String status;
     
-    public Airplane(String id, int capacity){
+    public Airplane(String id, int capacity, String status){
         this.id = id;
         this.capacity = capacity;
+        this.status = status;
     }
 
     public String getId() {
@@ -33,6 +35,17 @@ public class Airplane {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
     
-    
+    @Override
+    public String toString() {
+        return id;
+    }
 }

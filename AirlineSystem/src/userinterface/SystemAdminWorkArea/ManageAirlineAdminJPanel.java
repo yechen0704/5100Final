@@ -7,7 +7,6 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.Airline.Airline;
 import Business.EcoSystem;
-import Business.Role.AdminRole;
 import Business.Role.AirlineAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -428,7 +427,7 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
         if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
             JOptionPane.showMessageDialog(this,"It is already existing ");
         }else{
-            UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(name, uname, password, new AdminRole());
+            UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(name, uname, password, new AirlineAdminRole());
             Airline airline= system.getAirlineDirectory().createAirlineInfo(name,uname);
             populatetblAla();
             txtUsername.setText("");
