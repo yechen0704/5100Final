@@ -5,10 +5,10 @@
 package userinterface.CustomerRole;
 
 import Business.Airline.Airline;
+import Business.Airline.Flight;
 import Business.Customer.Customer;
 import Business.EcoSystem;
-
-import Business.EcoSystem;
+import Business.Order.Order;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -25,6 +25,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     private JPanel mainScreen;
     private UserAccount userAccount;
     private EcoSystem system;
+    private Order order;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
@@ -49,7 +50,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel = new javax.swing.JLabel();
         enterpriseLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblFlight = new javax.swing.JTable();
+        tblFlt = new javax.swing.JTable();
         btnOrder = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
         cbInsurance = new javax.swing.JCheckBox();
@@ -60,28 +61,28 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel1.setText("Order Your Flight:");
 
-        tblFlight.setModel(new javax.swing.table.DefaultTableModel(
+        tblFlt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Flight_id", "Original Place", "Destination Place", "Airplane_id.", "Cost", "Airline Company"
+                "Flight_id", "Original Place", "Destination Place", "Departure time", "Arriving time", "Airplane_id.", "Cost", "Airline Company"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true
+                false, false, false, false, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -92,7 +93,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblFlight);
+        jScrollPane2.setViewportView(tblFlt);
 
         btnOrder.setText("Order");
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +103,11 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         });
 
         btnView.setText("View History Order");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
         cbInsurance.setText("Buy Insurance?");
         cbInsurance.addActionListener(new java.awt.event.ActionListener() {
@@ -125,14 +131,12 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                         .addGap(115, 115, 115)
                         .addComponent(cbInsurance))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(207, 207, 207)
                         .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(79, 79, 79)
                         .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
+            .addComponent(jScrollPane2)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,14 +159,32 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
 
     private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
         // TODO add your handling code here:
-        
-        airline.addOrder(airline.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
-        for(Customer cust:system.getCustomerDirectory().getCustList()){
-            if(userAccount.getUsername().equals(cust.getUserName())){
-                cust.addOrder(restro.getName(), userAccount.getUsername(), null, items, String.valueOf(sum) , address);
+        int selectedRow = tblFlt.getSelectedRow();
+        if(selectedRow>=0){
+            for(int i = 0;i < system.getAirlineDirectory().getAirlineList().size(); i++){
+                    if(system.getAirlineDirectory().getAirlineList().get(i).getName().equals((String) tblFlt.getValueAt(selectedRow,5))){
+                        Airline al = system.getAirlineDirectory().getAirlineList().get(i);
+                        if(cbInsurance.isSelected()==true){
+                            order = al.addOrder(userAccount.getName(), (String) tblFlt.getValueAt(selectedRow,0), (String) tblFlt.getValueAt(selectedRow,1), (String) tblFlt.getValueAt(selectedRow,2), (String) tblFlt.getValueAt(selectedRow,3), (String) tblFlt.getValueAt(selectedRow,4), (String) tblFlt.getValueAt(selectedRow,5),(String) tblFlt.getValueAt(selectedRow,6),(String) tblFlt.getValueAt(selectedRow,7), true);
+                            for(Customer cust : system.getCustomerDirectory().getCustList()){
+                                if(cust.getName().equals(userAccount.getName())){
+                                    cust.addOrder(order);
+                                }
+                            }
+                        }else{
+                            order = al.addOrder(userAccount.getName(), (String) tblFlt.getValueAt(selectedRow,0), (String) tblFlt.getValueAt(selectedRow,1), (String) tblFlt.getValueAt(selectedRow,2), (String) tblFlt.getValueAt(selectedRow,3), (String) tblFlt.getValueAt(selectedRow,4), (String) tblFlt.getValueAt(selectedRow,5),(String) tblFlt.getValueAt(selectedRow,6), (String) tblFlt.getValueAt(selectedRow,7), false);
+                            for(Customer cust : system.getCustomerDirectory().getCustList()){
+                                if(cust.getName().equals(userAccount.getName())){
+                                    cust.addOrder(order);
+                                }
+                            }
+                        }
+                    }
             }
+        }else{
+            JOptionPane.showMessageDialog(null,"Please select a row");
         }
-        JOptionPane.showMessageDialog(this,"Your Order is placed","Thank You",JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(this,"Your Order is placed, your order id is:"+order.getOrder_id(),"Thank You",JOptionPane.WARNING_MESSAGE);
         mainScreen.remove(this);
         Component[] componentArray = mainScreen.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -175,6 +197,14 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbInsuranceActionPerformed
 
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        RequestLabTestJPanel rltjp = new RequestLabTestJPanel(mainScreen, userAccount, system);
+        mainScreen.add("RequestLabTestJPanel", rltjp);
+        CardLayout layout = (CardLayout) mainScreen.getLayout();
+        layout.next(mainScreen);
+    }//GEN-LAST:event_btnViewActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrder;
     private javax.swing.JButton btnView;
@@ -182,10 +212,25 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel enterpriseLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblFlight;
+    private javax.swing.JTable tblFlt;
     // End of variables declaration//GEN-END:variables
 
     private void populatetblFlt() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DefaultTableModel model = (DefaultTableModel) tblFlt.getModel();
+        model.setRowCount(0);
+        for (Airline al : system.getAirlineDirectory().getAirlineList()) {
+            for(Flight fl : al.getFlightList()){
+                Object[] row = new Object[8];
+                row[0] = fl.getFlight_id();
+                row[1] = fl.getOriginalplace();
+                row[2] = fl.getDestinationplace();
+                row[3] = fl.getDepartureTime();
+                row[4] = fl.getArrivingTime();
+                row[5] = fl.getUsedAirplane();
+                row[6] = fl.getCost();
+                row[7] = al;
+                model.addRow(row);
+            }
+        }
     }
 }

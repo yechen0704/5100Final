@@ -19,7 +19,7 @@ public class AirlineDirectory {
         this.airlineList=new ArrayList<Airline>();
     }
 
-    public ArrayList<Airline> getRestaurantList() {
+    public ArrayList<Airline> getAirlineList() {
         return airlineList;
     }
 
