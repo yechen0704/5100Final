@@ -16,6 +16,7 @@ public class Airline {
     private String adminUName;
     private ArrayList<Airplane> airplaneList;
     private ArrayList<Flight> flightList;
+    private ArrayList<Order> orderList;
     private String name;
 
     public ArrayList<Flight> getFlightList() {

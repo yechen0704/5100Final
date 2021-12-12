@@ -14,11 +14,18 @@ import java.util.ArrayList;
  */
 public class Customer {
     int id=101;
-    private String Name;
     private String UserName;
     private ArrayList<Order> orderList;
-    private String address;
-    private String number;
+    private String passportNum;
+    private String telNum;
+    
+    public Customer(String username, String ppn, String tn){
+        this.UserName = username;
+        this.passportNum = ppn;
+        this.telNum = tn;
+        orderList = new ArrayList<Order>();
+    }
+    
     public void addOrder(String restaurentName, String customerName, String deliverMan, String cost, String deliveryAddress) {
         Order order=new Order();
         order.setOrder_id(String.valueOf(id));
@@ -39,19 +46,6 @@ public class Customer {
     public void setUserName(String UserName) {
         this.UserName = UserName;
     }
-    
-    public Customer(String UserName){
-        this.UserName=UserName;
-        orderList=new ArrayList<Order>();
-    }
-    
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String Name) {
-        this.Name = Name;
-    }
 
     public ArrayList<Order> getOrderList() {
         return orderList;
@@ -61,19 +55,21 @@ public class Customer {
         this.orderList = order;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPassportNum() {
+        return passportNum;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPassportNum(String passportNum) {
+        this.passportNum = passportNum;
     }
 
-    public String getNumber() {
-        return number;
+    public String getTelNum() {
+        return telNum;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setTelNum(String telNum) {
+        this.telNum = telNum;
     }
+
+    
 }
