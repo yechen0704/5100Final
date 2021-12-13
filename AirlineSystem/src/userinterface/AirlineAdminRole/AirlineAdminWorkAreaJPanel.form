@@ -64,6 +64,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Manage Airplane"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageAirplaneActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnManageFlight">
       <Properties>

@@ -112,7 +112,11 @@ public class Airline {
         }
     }
     
-    public boolean checkIfUsernameIsUnique(String airplane_id){
+    public void deleteAirplane(Airplane airplane){
+        airplaneList.remove(airplane);
+    }
+    
+    public boolean checkIfAirplaneIsUnique(String airplane_id){
         for (Airplane ap : airplaneList){
             if (ap.equals(airplane_id)){
                 return false;
