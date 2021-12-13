@@ -112,6 +112,15 @@ public class Airline {
         }
     }
     
+    public boolean checkIfUsernameIsUnique(String airplane_id){
+        for (Airplane ap : airplaneList){
+            if (ap.equals(airplane_id)){
+                return false;
+            }      
+        }
+        return true;
+    }
+    
     @Override
     public String toString() {
         return name;

@@ -46,13 +46,13 @@ public class AirlineDirectory {
         airline.setName(name);
     }
     
-    public Airplane AddAirplane(Airline airline,String id,int capacity, String status){
-        airplane=new Airplane(id, capacity, status);
+    public Airplane AddAirplane(Airline airline,String id,int capacity, boolean repairStatus){
+        airplane=new Airplane(id, capacity, false);
         airline.addAirplane(airplane);
         return airplane;
     }
     
-    public void DeleteDish(Airline restro,Airplane airplane){
+    public void DeleteAirplane(Airline restro,Airplane airplane){
         restro.removeAirplane(airplane);
     }
 }
