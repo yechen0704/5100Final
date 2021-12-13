@@ -6,6 +6,7 @@
 package userinterface.AirlineAdminRole;
 
 import Business.Airline.Airline;
+import Business.Airline.Airplane;
 import Business.Airline.Flight;
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
@@ -27,6 +28,7 @@ public class ManageAirplaneJPanel extends javax.swing.JPanel {
     private JPanel mainScreen;
     private UserAccount userAccount;
     private EcoSystem system;
+    
     public ManageAirplaneJPanel(JPanel mainScreen, UserAccount userAccount, EcoSystem system) {
         initComponents();
         this.mainScreen = mainScreen;
@@ -74,20 +76,20 @@ public class ManageAirplaneJPanel extends javax.swing.JPanel {
 
         tblAp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Airplane_id", "Cpacity", "needed repair"
+                "Airplane_id", "Cpacity", "needed repair", "Occupation Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -134,7 +136,7 @@ public class ManageAirplaneJPanel extends javax.swing.JPanel {
 
         btnAssign.setText("Assign to me");
 
-        cbRepair.setText("needed repair");
+        cbRepair.setText("repair needed");
 
         tblFlt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,35 +187,34 @@ public class ManageAirplaneJPanel extends javax.swing.JPanel {
                         .addComponent(btnDelete)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(24, 24, 24)
-                                                .addComponent(txtCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(cbRepair)
-                                                .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txtAirplane_id, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(87, 87, 87)
-                                        .addComponent(jLabel2)))
-                                .addGap(46, 46, 46)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(btnBack)))
-                        .addGap(0, 77, Short.MAX_VALUE))
+                        .addGap(47, 47, 47)
+                        .addComponent(btnBack)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane3)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(24, 24, 24)
+                                        .addComponent(txtCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cbRepair)
+                                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtAirplane_id, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(87, 87, 87)
+                                .addComponent(jLabel2)))
+                        .addGap(46, 46, 46)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(321, 321, 321)
@@ -268,22 +269,24 @@ public class ManageAirplaneJPanel extends javax.swing.JPanel {
         mainScreen.remove(this);
         Component[] componentArray = mainScreen.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
-        sysAdminwjp.populateTree();
         CardLayout layout = (CardLayout) mainScreen.getLayout();
         layout.previous(mainScreen);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
 
-        String name = txtAirplane_id.getText();
-        String uname=txtCapacity.getText();
-        String password=txtPwd.getText();
+        String airplane_id = txtAirplane_id.getText();
+        String capacity = txtCapacity.getText();
+        boolean rs = cbRepair.isSelected()? true : false;
 
-        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
+        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(airplane_id)==false) {
             JOptionPane.showMessageDialog(this,"It is already existing ");
         }else{
-            UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(name, uname, password, new AirlineAdminRole());
+            Airplane ua1 = new Airplane(airplane_id, Integer.valueOf(capacity), rs);
+            for (Airline al : system.getAirlineDirectory().getAirlineList()) {
+                if(al.equals(userAccount.getName())){
+                }
+            }
             Airline airline= system.getAirlineDirectory().createAirlineInfo(name);
             populatetblAla();
             txtAirplane_id.setText("");
@@ -391,6 +394,19 @@ public class ManageAirplaneJPanel extends javax.swing.JPanel {
     }
 
     private void populatetblAp() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DefaultTableModel model = (DefaultTableModel) tblAp.getModel();
+        model.setRowCount(0);
+        for (Airline al : system.getAirlineDirectory().getAirlineList()){
+            if(al.equals(userAccount.getName())){
+                for(Airplane ap : al.getAirplaneList()){
+                    Object[] row = new Object[3];
+                    row[0] = ap.getId();
+                    row[1] = ap.getCapacity();
+                    row[2] = ap.isRepairStatus()? "Yes" : "No";
+                    row[3] = ap.isUsingStatus()? "Occupied" : "Not Occupied";
+                    model.addRow(row);
+                }
+            }
+        }
     }
 }

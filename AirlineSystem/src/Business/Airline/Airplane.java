@@ -12,12 +12,14 @@ package Business.Airline;
 public class Airplane {
     private String id;
     private int capacity;
-    private String status;
+    private boolean repairStatus;
+    private boolean usingStatus;
     
-    public Airplane(String id, int capacity, String status){
+    public Airplane(String id, int capacity, boolean repairStatus){
         this.id = id;
         this.capacity = capacity;
-        this.status = status;
+        this.repairStatus = repairStatus;
+        this.usingStatus = false;
     }
 
     public String getId() {
@@ -36,12 +38,20 @@ public class Airplane {
         this.capacity = capacity;
     }
 
-    public String getStatus() {
-        return status;
+    public boolean isRepairStatus() {
+        return repairStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setRepairStatus(boolean repairStatus) {
+        this.repairStatus = repairStatus;
+    }
+
+    public boolean isUsingStatus() {
+        return usingStatus;
+    }
+
+    public void setUsingStatus(boolean usingStatus) {
+        this.usingStatus = usingStatus;
     }
     
     @Override
