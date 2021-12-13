@@ -7,6 +7,7 @@ package userinterface.AirlineAdminRole;
 
 import Business.EcoSystem;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -46,6 +47,11 @@ public class AirlineAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setText("Welcome to Airline Company");
 
         btnManageAirplane.setText("Manage Airplane");
+        btnManageAirplane.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageAirplaneActionPerformed(evt);
+            }
+        });
 
         btnManageFlight.setText("Manage Flight");
 
@@ -88,6 +94,14 @@ public class AirlineAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageAirplane, btnManageFlight, jButton3});
 
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnManageAirplaneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAirplaneActionPerformed
+        // TODO add your handling code here:
+        ManageAirplaneJPanel majp = new ManageAirplaneJPanel(mainScreen, userAccount, system);
+        mainScreen.add("ManageAirplaneJPanel", majp);
+        CardLayout layout = (CardLayout) mainScreen.getLayout();
+        layout.next(mainScreen);
+    }//GEN-LAST:event_btnManageAirplaneActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

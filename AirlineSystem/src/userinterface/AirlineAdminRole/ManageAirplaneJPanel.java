@@ -278,34 +278,38 @@ public class ManageAirplaneJPanel extends javax.swing.JPanel {
         String airplane_id = txtAirplane_id.getText();
         String capacity = txtCapacity.getText();
         boolean rs = cbRepair.isSelected()? true : false;
-
-        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(airplane_id)==false) {
-            JOptionPane.showMessageDialog(this,"It is already existing ");
-        }else{
-            Airplane ua1 = new Airplane(airplane_id, Integer.valueOf(capacity), rs);
-            for (Airline al : system.getAirlineDirectory().getAirlineList()) {
-                if(al.equals(userAccount.getName())){
+        for (Airline a1 : system.getAirlineDirectory().getAirlineList()) {
+            if(a1.equals(userAccount.getName())){
+                if (a1.checkIfAirplaneIsUnique(airplane_id)==false) {
+                    JOptionPane.showMessageDialog(this,"It is already existing ");
+                }else{
+                    Airplane ap1 = new Airplane(airplane_id, Integer.valueOf(capacity), rs);
+                    a1.addAirplane(ap1);
+                    populatetblAp();
+                    txtAirplane_id.setText("");
+                    txtCapacity.setText("");
+                    cbRepair.setSelected(false);
                 }
             }
-            Airline airline= system.getAirlineDirectory().createAirlineInfo(name);
-            populatetblAla();
-            txtAirplane_id.setText("");
-            txtCapacity.setText("");
-            txtPwd.setText("");
         }
+        
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblAp.getSelectedRow();
         if(selectedRow>=0){
-            String name = (String) tblAp.getValueAt(selectedRow, 0);
-            String username= (String) tblAp.getValueAt(selectedRow, 1);
-            String pwd= (String) tblAp.getValueAt(selectedRow, 2);
-            UserAccount user=system.getUserAccountDirectory().authenticateUser(username, pwd);
-            system.getUserAccountDirectory().deleteUserAccount(user);
-            system.getAirlineDirectory().deleteAirline(user.getUsername());
-            populatetblAla();
+            String airplane_id = (String) tblAp.getValueAt(selectedRow, 0);
+            for (Airline al : system.getAirlineDirectory().getAirlineList()) {
+                if(al.equals(userAccount.getName())){
+                    for(Airplane ap : al.getAirplaneList()){
+                        if(ap.getId().equals(airplane_id)){
+                            al.deleteAirplane(ap);
+                        }
+                    }
+                }
+            }
+            populatetblAp();
         }else{
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
         }
@@ -313,9 +317,9 @@ public class ManageAirplaneJPanel extends javax.swing.JPanel {
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
-        String name = txtAirplane_id.getText();
-        String uname=txtCapacity.getText();
-        String password=txtPwd.getText();
+        String airplane_id = txtAirplane_id.getText();
+        String capacity = txtCapacity.getText();
+        boolean rs = cbRepair.isSelected()? true : false;
 
         if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
             JOptionPane.showMessageDialog(null,"  User Name already exists ");
@@ -336,13 +340,12 @@ public class ManageAirplaneJPanel extends javax.swing.JPanel {
         int selectRow = tblAp.getSelectedRow();
 
         if(selectRow>=0){
-            String name = (String) tblAp.getValueAt(selectRow, 0);
-            String username= (String) tblAp.getValueAt(selectRow, 1);
-            String pwd= (String) tblAp.getValueAt(selectRow, 2);
-            userAccount=system.getUserAccountDirectory().authenticateUser(username, pwd);
+            String airplane_id = (String) tblAp.getValueAt(selectRow, 0);
+            String capacity= (String) tblAp.getValueAt(selectRow, 1);
+            String repairStatus= (String) tblAp.getValueAt(selectRow, 2);
             txtAirplane_id.setText(userAccount.getName()+"");
             txtCapacity.setText(userAccount.getUsername()+"");
-            txtPwd.setText(userAccount.getPassword()+"");
+            cbRepair.setSelected(repairStatus.equals("Yes"));
         }else {
             JOptionPane.showMessageDialog(this,"Please select a row");
         }
