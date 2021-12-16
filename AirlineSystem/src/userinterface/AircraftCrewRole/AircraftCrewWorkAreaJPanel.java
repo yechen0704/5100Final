@@ -4,12 +4,11 @@
  */
 package userinterface.AircraftCrewRole;
 
+import Business.Airline.AircraftCrew;
+import Business.Airline.Airline;
+import Business.Airline.Flight;
 import Business.EcoSystem;
-import Business.Order.Order;
-
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.WorkRequest;
-import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -20,24 +19,21 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
 
-     private JPanel mainScreen;
-    private EcoSystem system;
-    private UserAccount userAccount;
+    JPanel mainScreen;
+    EcoSystem system;
+    UserAccount userAccount;
     
     
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public AircraftCrewWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+    public AircraftCrewWorkAreaJPanel(JPanel mainScreen, UserAccount userAccount, EcoSystem system) {
         initComponents();
-        
         this.mainScreen = mainScreen;
         this.userAccount = userAccount;
         this.system = system;
-        populateTable();
-    }
-    
-    public void populateTable(){
+        populatetblFlt();
+        System.out.println(userAccount.getUsername());
     }
 
     /**
@@ -49,30 +45,37 @@ public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblDm = new javax.swing.JTable();
-        assignJButton = new javax.swing.JButton();
-        processJButton = new javax.swing.JButton();
-        refreshJButton = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblFlt = new javax.swing.JTable();
+        btnAssign = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(104, 139, 241));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblDm.setModel(new javax.swing.table.DefaultTableModel(
+        tblFlt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status"
+                "Flight_id", "Original Place", "Destination Place", "Departure time", "Arriving time", "Airplane_id.", "Cost", "Airline Company"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, false
+                false, false, false, false, true, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -83,83 +86,79 @@ public class AircraftCrewWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblDm);
-        if (tblDm.getColumnModel().getColumnCount() > 0) {
-            tblDm.getColumnModel().getColumn(0).setResizable(false);
-            tblDm.getColumnModel().getColumn(1).setResizable(false);
-            tblDm.getColumnModel().getColumn(2).setResizable(false);
-            tblDm.getColumnModel().getColumn(3).setResizable(false);
-        }
+        jScrollPane3.setViewportView(tblFlt);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 375, 96));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 310));
 
-        assignJButton.setText("Assign to me");
-        assignJButton.addActionListener(new java.awt.event.ActionListener() {
+        btnAssign.setBackground(new java.awt.Color(183, 193, 246));
+        btnAssign.setFont(new java.awt.Font("宋体", 1, 18)); // NOI18N
+        btnAssign.setForeground(new java.awt.Color(238, 238, 238));
+        btnAssign.setText("Assign to me");
+        btnAssign.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignJButtonActionPerformed(evt);
+                btnAssignActionPerformed(evt);
             }
         });
-        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, 170, 60));
 
-        processJButton.setText("Process");
-        processJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                processJButtonActionPerformed(evt);
-            }
-        });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AirlineImages/icons8-crew-100-2.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, 110, 100));
 
-        refreshJButton.setText("Refresh");
-        refreshJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshJButtonActionPerformed(evt);
-            }
-        });
-        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(183, 193, 246));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 410, 280, 100));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
-
-        int selectedRow = tblDm.getSelectedRow();
-        
-        if (selectedRow < 0){
-            return;
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblFlt.getSelectedRow();
+        for(Airline al : system.getAirlineDirectory().getAirlineList()){
+            for(AircraftCrew ac : al.getAircraftcrewList()){
+                if(ac.getName().equals(userAccount.getName())){
+                    if(selectedRow>=0){
+                        ac.setStatus("Working");
+                        for(Flight fl : al.getFlightList()){
+                            if(fl.getFlight_id().equals((String) tblFlt.getValueAt(selectedRow, 0))){
+                                fl.setReadyStatus(true);
+                                ac.setFlight(fl.getFlight_id());
+                                JOptionPane.showMessageDialog(this,"The Aircraft Cerw is ready.");
+                            }
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(this,"Please select a row.");
+                    }
+                }
+            }
         }
-        
-        WorkRequest request = (WorkRequest)tblDm.getValueAt(selectedRow, 0);
-        request.setReceiver(userAccount);
-        request.setStatus("Pending");
-        populateTable();
-        
-    }//GEN-LAST:event_assignJButtonActionPerformed
 
-    private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
-        int selectedRow = tblDm.getSelectedRow();
-        
-        if (selectedRow < 0){
-            return;
-        }
-        Order order = (Order)tblDm.getValueAt(selectedRow, 0); 
-        
-        if(order.getStatus().equals("Delivered")){
-            JOptionPane.showMessageDialog(null," Order Already Delivered","Warning",JOptionPane.WARNING_MESSAGE);
-        }else{
-            ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(mainScreen,order,system);
-            mainScreen.add("processWorkRequestJPanel", processWorkRequestJPanel);
-            CardLayout layout = (CardLayout) mainScreen.getLayout();
-            layout.next(mainScreen);
-        }
-    }//GEN-LAST:event_processJButtonActionPerformed
-
-    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
-        populateTable();
-    }//GEN-LAST:event_refreshJButtonActionPerformed
+    }//GEN-LAST:event_btnAssignActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton assignJButton;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton processJButton;
-    private javax.swing.JButton refreshJButton;
-    private javax.swing.JTable tblDm;
+    private javax.swing.JButton btnAssign;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable tblFlt;
     // End of variables declaration//GEN-END:variables
+
+    private void populatetblFlt() {
+        DefaultTableModel model = (DefaultTableModel) tblFlt.getModel();
+        model.setRowCount(0);
+        for (Airline al : system.getAirlineDirectory().getAirlineList()) {
+            for(Flight fl : al.getFlightList()){
+                if(fl.getAirplane_id() != null && fl.isStatus()==false){
+                    Object[] row = new Object[8];
+                    row[0] = fl.getFlight_id();
+                    row[1] = fl.getOriginalplace();
+                    row[2] = fl.getDestinationplace();
+                    row[3] = fl.getDepartureTime();
+                    row[4] = fl.getArrivingTime();
+                    row[5] = fl.getAirplane_id();
+                    row[6] = fl.getCost();
+                    row[7] = al.getName();
+                    model.addRow(row);
+                }
+            }
+        }
+    }
 }

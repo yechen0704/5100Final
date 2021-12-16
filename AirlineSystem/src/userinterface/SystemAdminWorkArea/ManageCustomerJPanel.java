@@ -5,12 +5,17 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.Airline.Airline;
+import Business.Airline.Flight;
 import Business.Customer.Customer;
 import Business.EcoSystem;
+import Business.Order.Order;
 import Business.Role.CustomerRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -43,64 +48,26 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtUsername = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtPwd = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
-        txtOption = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        btnConfirm = new javax.swing.JButton();
-        backJButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCustomer = new javax.swing.JTable();
+        txtUsername = new javax.swing.JTextField();
         btnCreate = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         txtPpn = new javax.swing.JTextField();
+        txtPwd = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        txtOption = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        btnUpdate = new javax.swing.JButton();
         txtName = new javax.swing.JTextField();
+        btnDelete = new javax.swing.JButton();
         txtTn = new javax.swing.JTextField();
+        btnConfirm = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
 
-        jLabel4.setText("Password:");
-
-        txtPwd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPwdActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("Username:");
-
-        txtOption.setText("Customer Info");
-
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-
-        btnConfirm.setText("Confirm Update");
-        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmActionPerformed(evt);
-            }
-        });
-
-        backJButton.setText("<< Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
+        setBackground(new java.awt.Color(104, 139, 241));
 
         tblCustomer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,18 +103,81 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblCustomer);
 
+        btnCreate.setBackground(new java.awt.Color(108, 139, 241));
+        btnCreate.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        btnCreate.setForeground(new java.awt.Color(255, 255, 255));
         btnCreate.setText("Create");
+        btnCreate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
             }
         });
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Password:");
+
+        txtPwd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPwdActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Tel Number:");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Username:");
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Passport Number:");
 
+        txtOption.setFont(new java.awt.Font("Apple Chancery", 1, 24)); // NOI18N
+        txtOption.setForeground(new java.awt.Color(255, 255, 255));
+        txtOption.setText("——————Customer Info——————");
+
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Name:");
+
+        btnUpdate.setBackground(new java.awt.Color(108, 139, 241));
+        btnUpdate.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setText("Update");
+        btnUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setBackground(new java.awt.Color(108, 139, 241));
+        btnDelete.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("Delete");
+        btnDelete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        btnConfirm.setBackground(new java.awt.Color(108, 139, 241));
+        btnConfirm.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        btnConfirm.setForeground(new java.awt.Color(255, 255, 255));
+        btnConfirm.setText("Confirm Update");
+        btnConfirm.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
+            }
+        });
+
+        backJButton.setText("<< Back");
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -155,62 +185,64 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
+                .addComponent(backJButton)
+                .addGap(97, 97, 97)
+                .addComponent(txtOption)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backJButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGap(28, 28, 28)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtPpn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGap(28, 28, 28)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(txtOption, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(jLabel5))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPpn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnUpdate)
-                        .addGap(43, 43, 43)
-                        .addComponent(btnDelete)))
-                .addGap(23, 23, 23))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCreate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(btnConfirm)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(80, 80, 80)
+                        .addComponent(btnDelete)
+                        .addGap(9, 9, 9)))
+                .addGap(79, 79, 79))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(backJButton)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtOption)
+                    .addComponent(backJButton))
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnUpdate)
                             .addComponent(btnDelete))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(31, 31, 31))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(txtOption)
-                        .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(4, 4, 4)
@@ -220,7 +252,7 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -232,13 +264,68 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(txtTn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)))
-                .addComponent(btnCreate)
-                .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCreate)
+                        .addGap(18, 18, 18)))
                 .addComponent(btnConfirm)
-                .addGap(59, 59, 59))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+
+        String uname=txtUsername.getText();
+        Pattern unamematcher = Pattern.compile("^\\w{6,12}$");
+        Matcher uname1 = unamematcher.matcher(uname);
+        if(!uname1.matches()) {
+            JOptionPane.showMessageDialog(null, "Username's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String password=txtPwd.getText();
+        Pattern pwdmatcher = Pattern.compile("^\\w{6,12}$");
+        Matcher pwd = pwdmatcher.matcher(password);
+        if(!pwd.matches()) {
+            JOptionPane.showMessageDialog(null, "Password's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String name = txtName.getText();
+        Pattern namematcher = Pattern.compile("^([\\u4e00-\\u9fa5]{2,20}|[a-zA-Z.\\s]{2,20})$");
+        Matcher name1 = namematcher.matcher(name);
+        if(!name1.matches()) {
+            JOptionPane.showMessageDialog(null, "Name's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String ppn = txtPpn.getText();
+        Pattern ppnmatcher = Pattern.compile("^AB\\d{7}$");
+        Matcher ppn1 = ppnmatcher.matcher(ppn);
+        if(!ppn1.matches()) {
+            JOptionPane.showMessageDialog(null, "Passport Number's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String tn = txtTn.getText();
+        Pattern tnmatcher = Pattern.compile("^(1?|(1\\-)?)\\d{10}$");
+        Matcher tn1 = ppnmatcher.matcher(tn);
+        if(!tn1.matches()) {
+            JOptionPane.showMessageDialog(null, "Telephone Number's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
+            JOptionPane.showMessageDialog(this,"It is already existed.");
+        }else{
+            UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(name, uname,password,new CustomerRole());
+            Customer cust= system.getCustomerDirectory().createCustomer(name, ppn, tn);
+            populateTblCustomer();
+            txtUsername.setText("");
+            txtPwd.setText("");
+            txtPpn.setText("");
+            txtTn.setText("");
+        }
+    }//GEN-LAST:event_btnCreateActionPerformed
 
     private void txtPwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPwdActionPerformed
         // TODO add your handling code here:
@@ -281,8 +368,23 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             String username= (String) tblCustomer.getValueAt(selectedRow, 0);
             String pwd= (String) tblCustomer.getValueAt(selectedRow, 1);
             UserAccount user=system.getUserAccountDirectory().authenticateUser(username, pwd);
+            for(Airline al : system.getAirlineDirectory().getAirlineList()){
+                for(Order order : al.getOrderList()){
+                    if(order.getCustomerName().equals(user.getName())){
+                        al.deleteOrder(order.getOrder_id());
+                    }
+                }
+                for(Flight fl : al.getFlightList()){
+                    for(int i = 0; i<fl.getCustomerList().size(); i++){
+                        if(fl.getCustomerList().get(i).getName().equals(user.getName())){
+                            fl.getCustomerList().remove(i);
+                        }
+                    }
+                }
+            }
             system.getUserAccountDirectory().deleteUserAccount(user);
             system.getCustomerDirectory().deleteCustomer((String) tblCustomer.getValueAt(selectedRow, 2));
+            JOptionPane.showMessageDialog(null, "Delete Successfully!");
         }else{
             JOptionPane.showMessageDialog(null, "Please select a Row!!");
         }
@@ -291,17 +393,78 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         // TODO add your handling code here:
-
+        int selectedRow = tblCustomer.getSelectedRow();
         String uname=txtUsername.getText();
+        Pattern unamematcher = Pattern.compile("^\\w{6,12}$");
+        Matcher uname1 = unamematcher.matcher(uname);
+        if(!uname1.matches()) {
+            JOptionPane.showMessageDialog(null, "Username's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         String password=txtPwd.getText();
+        Pattern pwdmatcher = Pattern.compile("^\\w{6,12}$");
+        Matcher pwd = pwdmatcher.matcher(password);
+        if(!pwd.matches()) {
+            JOptionPane.showMessageDialog(null, "Password's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         String name = txtName.getText();
+        Pattern namematcher = Pattern.compile("^([\\u4e00-\\u9fa5]{2,20}|[a-zA-Z.\\s]{2,20})$");
+        Matcher name1 = namematcher.matcher(name);
+        if(!name1.matches()) {
+            JOptionPane.showMessageDialog(null, "Name's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         String ppn = txtPpn.getText();
+        Pattern ppnmatcher = Pattern.compile("^AB\\d{7}$");
+        Matcher ppn1 = ppnmatcher.matcher(ppn);
+        if(!ppn1.matches()) {
+            JOptionPane.showMessageDialog(null, "Passport Number's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         String tn = txtTn.getText();
+        Pattern tnmatcher = Pattern.compile("^(1?|(1\\-)?)\\d{10}$");
+        Matcher tn1 = ppnmatcher.matcher(tn);
+        if(!tn1.matches()) {
+            JOptionPane.showMessageDialog(null, "Telephone Number's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
             JOptionPane.showMessageDialog(null,"  User Name already exists ");
         }else{
-            system.getUserAccountDirectory().updateUserAccount(userAccount,uname,password);
-            int selectedRow = tblCustomer.getSelectedRow();
+            for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
+                if ("Business.Role.CustomerRole".equals(user.getRole().toString())) {
+                    if(system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false){
+                        JOptionPane.showMessageDialog(this,"It is already existed.");
+                    }else if(user.getUsername().equals((String) tblCustomer.getValueAt(selectedRow, 0))){
+                        system.getUserAccountDirectory().updateUserAccount(user,uname,password);
+                    }
+                }
+            }
+            for(Airline al : system.getAirlineDirectory().getAirlineList()){
+                for(Order order : al.getOrderList()){
+                    if(order.getCustomerName().equals((String) tblCustomer.getValueAt(selectedRow, 2))){
+                        order.setCustomerName((String) tblCustomer.getValueAt(selectedRow, 2));
+                    }
+                }
+                for(Flight fl : al.getFlightList()){
+                    for(int i = 0; i<fl.getCustomerList().size(); i++){
+                        if(fl.getCustomerList().get(i).getName().equals((String) tblCustomer.getValueAt(selectedRow, 2))){
+                            fl.getCustomerList().get(i).setName(name);
+                            fl.getCustomerList().get(i).setPassportNum(ppn);
+                            fl.getCustomerList().get(i).setTelNum(tn);
+                        }
+                    }
+                }
+            }
+//            for(UserAccount ua : system.getUserAccountDirectory().getUserAccountList()){
+//                System.out.println(ua.getUsername());
+//            }
             system.getCustomerDirectory().updateCustomer((String) tblCustomer.getValueAt(selectedRow,2),name, ppn, tn);
             populateTblCustomer();
             btnCreate.setEnabled(true);
@@ -314,6 +477,7 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
             txtName.setText("");
             txtPpn.setText("");
             txtTn.setText("");
+            JOptionPane.showMessageDialog(this,"Update Successfully.");
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
@@ -326,26 +490,6 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) mainScreen.getLayout();
         layout.previous(mainScreen);
     }//GEN-LAST:event_backJButtonActionPerformed
-
-    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-
-        String uname=txtUsername.getText();
-        String password=txtPwd.getText();
-        String name = txtName.getText();
-        String ppn = txtPpn.getText();
-        String tn = txtTn.getText();
-        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
-            JOptionPane.showMessageDialog(this,"It is already existed.");
-        }else{
-            UserAccount ua1 =system.getUserAccountDirectory().createUserAccount(name, uname,password,new CustomerRole());
-            Customer cust= system.getCustomerDirectory().createCustomer(name, ppn, tn);
-            populateTblCustomer();
-            txtUsername.setText("");
-            txtPwd.setText("");
-            txtPpn.setText("");
-            txtTn.setText("");
-        }
-    }//GEN-LAST:event_btnCreateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -378,13 +522,14 @@ public class ManageCustomerJPanel extends javax.swing.JPanel {
                 row[0] = user.getUsername();
                 row[1] = user.getPassword();
                 for(int i = 0;i < system.getCustomerDirectory().getCustList().size(); i++){
-                    if(system.getCustomerDirectory().getCustList().get(i).getName().equals(user.getName())){
+                    if(system.getCustomerDirectory().getCustList().get(i).getName()==null){
+                        continue;
+                    }else if(system.getCustomerDirectory().getCustList().get(i).getName().equals(user.getName())){
                         row[2] = user.getName();
                         row[3] = system.getCustomerDirectory().getCustList().get(i).getPassportNum();
                         row[4] = system.getCustomerDirectory().getCustList().get(i).getTelNum();
                     }
                 }
-                
                 model.addRow(row);
             }
         }

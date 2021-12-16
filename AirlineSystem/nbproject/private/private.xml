@@ -3,14 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/刘欣卓/Documents/GitHub/5100Final/AirlineSystem/src/userinterface/CustomerRole/CustomerAreaJPanel.java</file>
-            <file>file:/C:/Users/刘欣卓/Documents/GitHub/5100Final/AirlineSystem/src/Business/UserAccount/UserAccountDirectory.java</file>
-            <file>file:/C:/Users/刘欣卓/Documents/GitHub/5100Final/AirlineSystem/src/userinterface/SystemAdminWorkArea/ManageCustomerJPanel.java</file>
-            <file>file:/C:/Users/刘欣卓/Documents/GitHub/5100Final/AirlineSystem/src/Business/Customer/Customer.java</file>
-            <file>file:/C:/Users/刘欣卓/Documents/GitHub/5100Final/AirlineSystem/src/userinterface/CustomerRole/RequestLabTestJPanel.java</file>
-            <file>file:/C:/Users/刘欣卓/Documents/GitHub/5100Final/AirlineSystem/src/Business/Airline/Airline.java</file>
-            <file>file:/C:/Users/刘欣卓/Documents/GitHub/5100Final/AirlineSystem/src/Business/Customer/CustomerDirectory.java</file>
-            <file>file:/C:/Users/刘欣卓/Documents/GitHub/5100Final/AirlineSystem/src/Business/Order/Order.java</file>
+            <file>file:/C:/Users/刘欣卓/Documents/GitHub/5100Final/AirlineSystem/src/Business/Airline/Flight.java</file>
+            <file>file:/C:/Users/刘欣卓/Documents/GitHub/5100Final/AirlineSystem/src/userinterface/MOPRole/MOPWorkAreaJPanel.java</file>
         </group>
     </open-files>
 </project-private>

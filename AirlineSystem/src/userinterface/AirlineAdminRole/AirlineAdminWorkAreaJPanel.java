@@ -42,37 +42,70 @@ public class AirlineAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageAirplane = new javax.swing.JButton();
         btnManageFlight = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("宋体", 0, 18)); // NOI18N
-        jLabel1.setText("Welcome to Airline Company");
+        setBackground(new java.awt.Color(104, 139, 241));
 
+        jLabel1.setFont(new java.awt.Font("Apple Chancery", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("——————————Welcome to Airline Company——————————");
+
+        btnManageAirplane.setBackground(new java.awt.Color(104, 139, 241));
+        btnManageAirplane.setForeground(new java.awt.Color(238, 238, 238));
         btnManageAirplane.setText("Manage Airplane");
+        btnManageAirplane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnManageAirplane.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageAirplaneActionPerformed(evt);
             }
         });
 
+        btnManageFlight.setBackground(new java.awt.Color(104, 139, 241));
+        btnManageFlight.setForeground(new java.awt.Color(238, 238, 238));
         btnManageFlight.setText("Manage Flight");
+        btnManageFlight.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnManageFlight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageFlightActionPerformed(evt);
+            }
+        });
 
+        jButton3.setBackground(new java.awt.Color(104, 139, 241));
+        jButton3.setForeground(new java.awt.Color(238, 238, 238));
         jButton3.setText("Manage Aircraft Crew");
+        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AirlineImages/icons8-airplane-40.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(325, 325, 325)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnManageAirplane, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnManageFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 170, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnManageFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnManageAirplane, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(221, Short.MAX_VALUE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(141, 141, 141))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(403, 403, 403)))))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnManageAirplane, btnManageFlight, jButton3});
@@ -80,15 +113,19 @@ public class AirlineAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel1)
-                .addGap(44, 44, 44)
-                .addComponent(btnManageAirplane, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(85, 85, 85)
+                .addComponent(btnManageAirplane, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addComponent(btnManageFlight, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnManageAirplane, btnManageFlight, jButton3});
@@ -103,11 +140,29 @@ public class AirlineAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(mainScreen);
     }//GEN-LAST:event_btnManageAirplaneActionPerformed
 
+    private void btnManageFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFlightActionPerformed
+        // TODO add your handling code here:
+        ManageFlightJPanel mfjp = new ManageFlightJPanel(mainScreen, userAccount, system);
+        mainScreen.add("ManageFlightJPanel", mfjp);
+        CardLayout layout = (CardLayout) mainScreen.getLayout();
+        layout.next(mainScreen);
+    }//GEN-LAST:event_btnManageFlightActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        ManageAircraftCrewJPanel macjp = new ManageAircraftCrewJPanel(mainScreen, userAccount, system);
+        mainScreen.add("ManageAircraftCrewJPanel", macjp);
+        CardLayout layout = (CardLayout) mainScreen.getLayout();
+        layout.next(mainScreen);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageAirplane;
     private javax.swing.JButton btnManageFlight;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

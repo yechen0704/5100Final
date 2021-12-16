@@ -5,6 +5,8 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.Airline.Airline;
+import Business.Customer.Customer;
 import Business.EcoSystem;
 
 import Business.Organization;
@@ -33,6 +35,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.system = system;
         this.userAccount = userAccount;
         populateTree();
+//        for(Airline al : system.getAirlineDirectory().getAirlineList()){
+//            System.out.println("现在有的airline名字："+al.getName());
+//        }
+//        for(Customer cus : system.getCustomerDirectory().getCustList()){
+//            System.out.println("现在有的customer名字："+cus.getName());
+//        }
+        System.out.println(userAccount.getUsername());
     }
     
     public void populateTree(){
@@ -64,8 +73,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblSelectedNode = new javax.swing.JLabel();
-        btnManageAA = new javax.swing.JButton();
         btnCustomer = new javax.swing.JButton();
+        btnManageAA = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -88,26 +97,36 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 118, Short.MAX_VALUE))
+                .addGap(0, 321, Short.MAX_VALUE))
         );
 
         jSplitPane.setLeftComponent(jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(104, 139, 241));
 
         jLabel1.setText("Selected Node:");
 
         lblSelectedNode.setText("<View_selected_node>");
 
-        btnManageAA.setText("Manage AirlineAdmin");
-        btnManageAA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageAAActionPerformed(evt);
-            }
-        });
-
+        btnCustomer.setBackground(new java.awt.Color(108, 138, 241));
+        btnCustomer.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        btnCustomer.setForeground(new java.awt.Color(255, 255, 255));
         btnCustomer.setText("Manage Customer");
+        btnCustomer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCustomerActionPerformed(evt);
+            }
+        });
+
+        btnManageAA.setBackground(new java.awt.Color(108, 138, 241));
+        btnManageAA.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        btnManageAA.setForeground(new java.awt.Color(255, 255, 255));
+        btnManageAA.setText("Manage AirlineAdmin");
+        btnManageAA.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnManageAA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageAAActionPerformed(evt);
             }
         });
 
@@ -119,11 +138,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCustomer)
-                    .addComponent(btnManageAA)
-                    .addComponent(lblSelectedNode))
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addComponent(lblSelectedNode)
+                .addContainerGap(664, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnManageAA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(338, 338, 338))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,25 +154,17 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblSelectedNode))
-                .addGap(79, 79, 79)
+                .addGap(175, 175, 175)
                 .addComponent(btnManageAA)
-                .addGap(18, 18, 18)
+                .addGap(43, 43, 43)
                 .addComponent(btnCustomer)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
 
         jSplitPane.setRightComponent(jPanel2);
 
         add(jSplitPane, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTreeValueChanged
-        
-        DefaultMutableTreeNode selectedNode= (DefaultMutableTreeNode)jTree.getLastSelectedPathComponent();
-        if(selectedNode!=null){
-            lblSelectedNode.setText(selectedNode.toString());
-        }
-    }//GEN-LAST:event_jTreeValueChanged
 
     private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
         // TODO add your handling code here:
@@ -167,6 +181,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) mainScreen.getLayout();
         layout.next(mainScreen);
     }//GEN-LAST:event_btnManageAAActionPerformed
+
+    private void jTreeValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTreeValueChanged
+
+        DefaultMutableTreeNode selectedNode= (DefaultMutableTreeNode)jTree.getLastSelectedPathComponent();
+        if(selectedNode!=null){
+            lblSelectedNode.setText(selectedNode.toString());
+        }
+    }//GEN-LAST:event_jTreeValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

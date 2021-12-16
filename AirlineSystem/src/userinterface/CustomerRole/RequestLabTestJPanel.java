@@ -33,6 +33,7 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.system = system;
         populateFlt();
+        System.out.println(userAccount.getUsername());
     }
 
     /**
@@ -46,10 +47,12 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
 
         btnBack = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnDelete = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblFlt = new javax.swing.JTable();
-        btnDelete = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(217, 235, 248));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBack.setText("<<Back");
@@ -60,32 +63,48 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setFont(new java.awt.Font("Tsukushi B Round Gothic", 1, 18)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(255, 255, 255));
         enterpriseLabel.setText("View Your Flight:");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 170, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 170, 30));
+
+        jPanel1.setBackground(new java.awt.Color(62, 80, 170));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1130, 50));
+
+        btnDelete.setFont(new java.awt.Font("Tsukushi A Round Gothic", 1, 18)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(0, 51, 204));
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AirlineImages/icons8-flight-70.png"))); // NOI18N
+        btnDelete.setText("Cancel");
+        btnDelete.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, -1, -1));
 
         tblFlt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Flight_id", "Original Place", "Destination Place", "Airplane_id.", "Departure Time", "Arriving Time", "Airplane_id.", "Airline Company", "Order_id"
+                "Flight_id", "Original Place", "Destination Place", "Airplane_id", "Departure Time", "Arriving Time", "Cost", "Airline Company", "Order_id", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -99,14 +118,6 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblFlt);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 950, 230));
-
-        btnDelete.setText("Cancel");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 190, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -114,10 +125,8 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
         mainScreen.remove(this);
         Component[] componentArray = mainScreen.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        CustomerAreaJPanel dwjp = (CustomerAreaJPanel) component;
         CardLayout layout = (CardLayout)mainScreen.getLayout();
         layout.previous(mainScreen);
-
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -127,26 +136,31 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Please select a row from the table to cancel","Warning",JOptionPane.WARNING_MESSAGE);
         }else{
             for (Airline al : system.getAirlineDirectory().getAirlineList()){
-                for (Order od : al.getOrderList()){
-                    if(od.getOrder_id().equals((String) tblFlt.getValueAt(selectedRow, 6))){
-                        al.deleteOrder(od.toString());
-                        for(Customer cust : system.getCustomerDirectory().getCustList()){
+                for (int i=0; i<al.getOrderList().size();i++){
+                    if(al.getOrderList().get(i).getOrder_id().equals((String) tblFlt.getValueAt(selectedRow, 8))){
+                        if(al.getOrderList().get(i).isStatus()){
+                            JOptionPane.showMessageDialog(this,"This order is done. You cannot cancel it.");
+                        }else{
+                            for(Customer cust : system.getCustomerDirectory().getCustList()){
                                 if(cust.getName().equals(userAccount.getName())){
-                                    cust.deleteOrder(od);
+                                    cust.deleteOrder(al.getOrderList().get(i));
                                 }
                             }
+                            al.deleteOrder(al.getOrderList().get(i).getOrder_id());
+                        }
                     }
                 }
             }
+            JOptionPane.showMessageDialog(null,"Cancel Successfully.");
+            populateFlt();
         }
-        populateFlt();
-        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblFlt;
     // End of variables declaration//GEN-END:variables
@@ -154,17 +168,20 @@ public class RequestLabTestJPanel extends javax.swing.JPanel {
     private void populateFlt() {
         DefaultTableModel model = (DefaultTableModel) tblFlt.getModel();
         model.setRowCount(0);
-        for (Airline al : system.getAirlineDirectory().getAirlineList()) {
-            for(Order od : al.getOrderList()){
+        for (Customer cust : system.getCustomerDirectory().getCustList()) {
+            for(Order od : cust.getOrderList()){
                 if(od.getCustomerName().equals(userAccount.getName())){
-                    Object[] row = new Object[7];
+                    Object[] row = new Object[10];
                     row[0] = od.getFlight_id();
                     row[1] = od.getOriginalplace();
                     row[2] = od.getDestinationplace();
                     row[3] = od.getAirplane_id();
-                    row[4] = od.getCost();
-                    row[5] = al;
-                    row[6] = od.getOrder_id();
+                    row[4] = od.getDepartureTime();
+                    row[5] = od.getArrivingTime();
+                    row[6] = od.getCost();
+                    row[7] = od.getAirline();
+                    row[8] = od.getOrder_id();
+                    row[9] = od.isStatus()? "Done" : "Processing";
                     model.addRow(row);
                 }
             }

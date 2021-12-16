@@ -11,6 +11,8 @@ import Business.Role.AirlineAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -44,53 +46,22 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane = new javax.swing.JScrollPane();
+        tblAla = new javax.swing.JTable();
+        jLabel = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        txtName = new javax.swing.JTextField();
         btnConfirm = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         txtUsername = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        btnBack1 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         txtPwd = new javax.swing.JPasswordField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblAla = new javax.swing.JTable();
-        jLabel8 = new javax.swing.JLabel();
-        btnCreate = new javax.swing.JButton();
-        txtName = new javax.swing.JTextField();
-        btnUpdate = new javax.swing.JButton();
 
-        jLabel6.setText("Name:");
-
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-
-        btnConfirm.setText("Confirm Update");
-        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("AirlineCompany Info");
-
-        jLabel7.setText("Password:");
-
-        btnBack1.setText("<< Back");
-        btnBack1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBack1ActionPerformed(evt);
-            }
-        });
-
-        txtPwd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPwdActionPerformed(evt);
-            }
-        });
+        setBackground(new java.awt.Color(104, 139, 241));
 
         tblAla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,21 +89,71 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tblAla);
+        jScrollPane.setViewportView(tblAla);
 
-        jLabel8.setText("Username:");
+        jLabel.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel.setText("Username:");
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Name:");
+
+        btnCreate.setBackground(new java.awt.Color(108, 139, 241));
+        btnCreate.setForeground(new java.awt.Color(255, 255, 255));
         btnCreate.setText("Create Airline");
+        btnCreate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(108, 139, 241));
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("Delete");
+        btnDelete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        btnConfirm.setBackground(new java.awt.Color(108, 139, 241));
+        btnConfirm.setForeground(new java.awt.Color(255, 255, 255));
+        btnConfirm.setText("Confirm Update");
+        btnConfirm.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
+            }
+        });
+
+        btnUpdate.setBackground(new java.awt.Color(108, 139, 241));
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
+        btnUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Apple Chancery", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("————————Airline Company Info————————");
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Password:");
+
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        txtPwd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPwdActionPerformed(evt);
             }
         });
 
@@ -144,144 +165,104 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(btnBack1))
+                        .addComponent(btnBack))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(93, 93, 93)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnCreate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addComponent(btnConfirm)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 451, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(24, 24, 24)
-                                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(24, 24, 24)
-                                                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(24, 24, 24)
-                                                    .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGap(46, 46, 46))
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(24, 24, 24)
+                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(24, 24, 24)
+                                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(24, 24, 24)
+                                            .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(46, 46, 46)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(70, 70, 70)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btnUpdate)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(btnDelete)))))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(73, 73, 73)
+                                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(168, 168, 168)
+                                .addComponent(jLabel2)))))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(btnBack1)
+                .addComponent(btnBack)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnUpdate)
-                            .addComponent(btnDelete))
-                        .addGap(6, 6, 6))
+                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)))
-                .addComponent(btnCreate)
+                            .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)))
+                .addGap(24, 24, 24)
+                .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnConfirm)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(188, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblAla.getSelectedRow();
-        if(selectedRow>=0){
-            String name = (String) tblAla.getValueAt(selectedRow, 0);
-            String username= (String) tblAla.getValueAt(selectedRow, 1);
-            String pwd= (String) tblAla.getValueAt(selectedRow, 2);
-            UserAccount user=system.getUserAccountDirectory().authenticateUser(username, pwd);
-            system.getUserAccountDirectory().deleteUserAccount(user);
-            system.getAirlineDirectory().deleteAirline(user.getUsername());
-            populatetblAla();
-        }else{
-            JOptionPane.showMessageDialog(null, "Please select a Row!!");
-        }
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-        // TODO add your handling code here:
-        String name = txtName.getText();
-        String uname=txtUsername.getText();
-        String password=txtPwd.getText();
-
-        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
-            JOptionPane.showMessageDialog(null,"  User Name already exists ");
-        }else{
-            system.getUserAccountDirectory().updateUserAccount(name,userAccount,uname,password);
-            populatetblAla();
-            btnCreate.setEnabled(true);
-            btnDelete.setEnabled(true);
-            btnUpdate.setEnabled(true);
-            btnConfirm.setEnabled(false);
-            txtUsername.setText("");
-            txtPwd.setText("");
-        }
-    }//GEN-LAST:event_btnConfirmActionPerformed
-
-    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
-        mainScreen.remove(this);
-        Component[] componentArray = mainScreen.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
-        sysAdminwjp.populateTree();
-        CardLayout layout = (CardLayout) mainScreen.getLayout();
-        layout.previous(mainScreen);
-    }//GEN-LAST:event_btnBack1ActionPerformed
-
-    private void txtPwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPwdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPwdActionPerformed
-
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
 
-        String name = txtName.getText();
         String uname=txtUsername.getText();
+        Pattern unamematcher = Pattern.compile("^\\w{6,12}$");
+        Matcher uname1 = unamematcher.matcher(uname);
+        if(!uname1.matches()) {
+            JOptionPane.showMessageDialog(null, "Username's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         String password=txtPwd.getText();
+        Pattern pwdmatcher = Pattern.compile("^\\w{6,12}$");
+        Matcher pwd = pwdmatcher.matcher(password);
+        if(!pwd.matches()) {
+            JOptionPane.showMessageDialog(null, "Password's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String name = txtName.getText();
+        Pattern namematcher = Pattern.compile("^([\\u4e00-\\u9fa5]{2,20}|[a-zA-Z.\\s]{2,20})$");
+        Matcher name1 = namematcher.matcher(name);
+        if(!name1.matches()) {
+            JOptionPane.showMessageDialog(null, "Name's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
         if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
             JOptionPane.showMessageDialog(this,"It is already existing ");
@@ -294,6 +275,77 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
             txtPwd.setText("");
         }
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblAla.getSelectedRow();
+        if(selectedRow>=0){
+            String name = (String) tblAla.getValueAt(selectedRow, 0);
+            String username= (String) tblAla.getValueAt(selectedRow, 1);
+            String pwd= (String) tblAla.getValueAt(selectedRow, 2);
+            UserAccount user=system.getUserAccountDirectory().authenticateUser(username, pwd);
+            system.getUserAccountDirectory().deleteUserAccount(user);
+            system.getAirlineDirectory().deleteAirline(name);
+            populatetblAla();
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select a Row!!");
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblAla.getSelectedRow();
+        String uname=txtUsername.getText();
+        Pattern unamematcher = Pattern.compile("^\\w{6,12}$");
+        Matcher uname1 = unamematcher.matcher(uname);
+        if(!uname1.matches()) {
+            JOptionPane.showMessageDialog(null, "Username's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String password=txtPwd.getText();
+        Pattern pwdmatcher = Pattern.compile("^\\w{6,12}$");
+        Matcher pwd = pwdmatcher.matcher(password);
+        if(!pwd.matches()) {
+            JOptionPane.showMessageDialog(null, "Password's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String name = txtName.getText();
+        Pattern namematcher = Pattern.compile("^([\\u4e00-\\u9fa5]{2,20}|[a-zA-Z.\\s]{2,20})$");
+        Matcher name1 = namematcher.matcher(name);
+        if(!name1.matches()) {
+            JOptionPane.showMessageDialog(null, "Name's input is invalid!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false) {
+            JOptionPane.showMessageDialog(null,"  User Name already exists ");
+        }else{
+            for (UserAccount user : system.getUserAccountDirectory().getUserAccountList()) {
+                if ("Business.Role.AirlineAdminRole".equals(user.getRole().toString())) {
+                    if(system.getUserAccountDirectory().checkIfUsernameIsUnique(uname)==false){
+                        JOptionPane.showMessageDialog(this,"It is already existed.");
+                    }else if(user.getUsername().equals((String) tblAla.getValueAt(selectedRow, 0))){
+                        userAccount=system.getUserAccountDirectory().authenticateUser((String) tblAla.getValueAt(selectedRow, 1), (String) tblAla.getValueAt(selectedRow, 2));
+                        system.getUserAccountDirectory().updateUserAccount(userAccount,uname,password);
+                    }
+                }
+            }
+            for(Airline al : system.getAirlineDirectory().getAirlineList()){
+                if(al.getName().equals((String) tblAla.getValueAt(selectedRow, 0))){
+                    al.setName(name);
+                }
+            }
+            populatetblAla();
+            btnCreate.setEnabled(true);
+            btnDelete.setEnabled(true);
+            btnUpdate.setEnabled(true);
+            btnConfirm.setEnabled(false);
+            txtUsername.setText("");
+            txtPwd.setText("");
+        }
+    }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
@@ -316,18 +368,32 @@ public class ManageAirlineAdminJPanel extends javax.swing.JPanel {
         btnConfirm.setEnabled(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        mainScreen.remove(this);
+        Component[] componentArray = mainScreen.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
+        sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) mainScreen.getLayout();
+        layout.previous(mainScreen);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtPwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPwdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPwdActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack1;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JTable tblAla;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPwd;

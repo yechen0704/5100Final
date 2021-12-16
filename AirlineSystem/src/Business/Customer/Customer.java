@@ -13,8 +13,7 @@ import java.util.ArrayList;
  * @author harold
  */
 public class Customer {
-    int id=101;
-    private String Name;
+     private String Name;
     private ArrayList<Order> orderList;
     private String passportNum;
     private String telNum;
@@ -32,7 +31,11 @@ public class Customer {
     }
     
     public void deleteOrder(Order order){
-        orderList.remove(order);
+        for(int i=0; i<orderList.size(); i++){
+            if(orderList.get(i).getOrder_id().equals(order.getOrder_id())){
+                orderList.remove(i);
+            }
+        }
     }
 
     public String getName() {
@@ -67,5 +70,12 @@ public class Customer {
         this.telNum = telNum;
     }
 
-    
+    public boolean checkIfOrderIsUnique(Order order){
+        for(Order od : orderList){
+            if(od.getFlight_id().equals(order.getFlight_id()) && od.isStatus()==false){
+                return true;
+            }
+        }
+        return false;
+    }
 }

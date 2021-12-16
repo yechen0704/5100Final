@@ -41,9 +41,6 @@ public class ConfigureASystem {
         Employee employee6 = system.getEmployeeDirectory().createEmployee("MOP");
         UserAccount ua6 = system.getUserAccountDirectory().createUserAccount("mop", "mop", employee, new MOPRole());
         
-        Employee employee7 = system.getEmployeeDirectory().createEmployee("AC");
-        UserAccount ua7 = system.getUserAccountDirectory().createUserAccount("aircraftcrew", "aircraftcrew", employee, new AircraftCrewRole());
-        
         return system;
     }
     

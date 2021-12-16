@@ -16,12 +16,32 @@ public class Flight {
     private String flight_id;
     private String originalplace;
     private String destinationplace;
-    private String status;
-    private Airplane usedAirplane;
+    private boolean status;//是否出发
+    private boolean readyStatus;//乘务组是否上飞机
+    private boolean customerStatus;//检票员决定顾客是否已经全部上飞机
+    private boolean timeStatus;//是否延误
+    private String airplane_id;
     private String cost;
     private String departureTime;
     private ArrayList<Customer> customerList;
     private String arrivingTime;
+    private String airline;
+
+    public boolean isTimeStatus() {
+        return timeStatus;
+    }
+
+    public void setTimeStatus(boolean timeStatus) {
+        this.timeStatus = timeStatus;
+    }
+
+    public String getAirline() {
+        return airline;
+    }
+
+    public void setAirline(String airline) {
+        this.airline = airline;
+    }
 
     public ArrayList<Customer> getCustomerList() {
         return customerList;
@@ -64,20 +84,36 @@ public class Flight {
         this.destinationplace = destinationplaceName;
     }
 
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
-    public Airplane getUsedAirplane() {
-        return usedAirplane;
+    public boolean isCustomerStatus() {
+        return customerStatus;
     }
 
-    public void setUsedAirplane(Airplane usedAirplane) {
-        this.usedAirplane = usedAirplane;
+    public void setCustomerStatus(boolean customerStatus) {
+        this.customerStatus = customerStatus;
+    }
+
+    public boolean isReadyStatus() {
+        return readyStatus;
+    }
+
+    public void setReadyStatus(boolean readyStatus) {
+        this.readyStatus = readyStatus;
+    }
+    
+    public String getAirplane_id() {
+        return airplane_id;
+    }
+
+    public void setAirplane_id(String airplane_id) {
+        this.airplane_id = airplane_id;
     }
 
     public String getCost() {

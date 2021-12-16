@@ -62,18 +62,36 @@ public class UserAccountDirectory {
     }
     
     public void deleteUserAccount(UserAccount user){
-        userAccountList.remove(user);
+        for(int i=0; i<userAccountList.size(); i++){
+            if(userAccountList.get(i).getName()==null){
+                continue;
+            }else if(userAccountList.get(i).getName().equals(user.getName())){
+                userAccountList.remove(i);
+            }
+        }
     }
     
     public void updateUserAccount(UserAccount user,String username, String password){
-        user.setUsername(username);
-        user.setPassword(password);
+        for(int i=0; i<userAccountList.size(); i++){
+            if(userAccountList.get(i).getName()==null){
+                continue;
+            }else if(userAccountList.get(i).getName().equals(user.getName())){
+                userAccountList.get(i).setUsername(username);
+                userAccountList.get(i).setPassword(password);
+            }
+        }
     }
     
     public void updateUserAccount(String name, UserAccount user,String username, String password){
-        user.setName(name);
-        user.setUsername(username);
-        user.setPassword(password);
+        for(int i=0; i<userAccountList.size(); i++){
+            if(userAccountList.get(i).getName()==null){
+                continue;
+            }else if(userAccountList.get(i).getName().equals(user.getName())){
+                userAccountList.get(i).setName(name);
+                userAccountList.get(i).setUsername(username);
+                userAccountList.get(i).setPassword(password);
+            }
+        }
     }
     
     public boolean checkIfUsernameIsUnique(String username){

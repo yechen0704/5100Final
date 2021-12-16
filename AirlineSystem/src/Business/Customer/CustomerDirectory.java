@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class CustomerDirectory {
     private ArrayList<Customer> customerList;
-    private Customer customer;
     
     public ArrayList<Customer> getCustList() {
         return customerList;
@@ -28,7 +27,7 @@ public class CustomerDirectory {
     }
     
     public Customer createCustomer(String name, String ppn, String tn){
-        customer= new Customer(name, ppn, tn);
+        Customer customer= new Customer(name, ppn, tn);
         customerList.add(customer);
         return customer;
     }

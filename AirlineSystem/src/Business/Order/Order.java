@@ -5,6 +5,8 @@
  */
 package Business.Order;
 
+import java.util.UUID;
+
 /**
  *
  * @author 刘欣卓
@@ -19,10 +21,32 @@ public class Order {
     private String arrivingTime;
     private String airplane_id;
     private String cost;
-    private String status;
+    private boolean status;
     private String airline;
     private boolean insurance; 
 
+    public Order(String customerName, String flight_id, String originalplace, String destinationplace, String departureTime, String arrivingTime,  String airplane_id, String cost, String airline, boolean insurance) {
+        this.customerName = customerName;
+        this.flight_id = flight_id;
+        this.originalplace = originalplace;
+        this.destinationplace = destinationplace;
+        this.departureTime = departureTime;
+        this.arrivingTime = arrivingTime;
+        this.airplane_id = airplane_id;
+        this.cost = cost;
+        this.airline = airline;
+        this.insurance = insurance;
+        this.order_id = getUUID();
+        this.status = false;
+    }
+
+    public String getUUID(){
+        UUID uuid=UUID.randomUUID();
+        String str = uuid.toString(); 
+        String uuidStr=str.replace("-", "");
+        return uuidStr;
+      }
+    
     public String getDepartureTime() {
         return departureTime;
     }
@@ -95,11 +119,11 @@ public class Order {
         this.cost = cost;
     }
 
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 

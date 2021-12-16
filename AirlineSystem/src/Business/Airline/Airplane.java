@@ -11,11 +11,11 @@ package Business.Airline;
  */
 public class Airplane {
     private String id;
-    private int capacity;
+    private String capacity;
     private boolean repairStatus;
     private boolean usingStatus;
     
-    public Airplane(String id, int capacity, boolean repairStatus){
+    public Airplane(String id, String capacity, boolean repairStatus){
         this.id = id;
         this.capacity = capacity;
         this.repairStatus = repairStatus;
@@ -30,11 +30,11 @@ public class Airplane {
         this.id = id;
     }
 
-    public int getCapacity() {
+    public String getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
 

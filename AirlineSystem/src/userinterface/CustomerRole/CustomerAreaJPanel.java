@@ -35,6 +35,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.system = system;
         populatetblFlt();
+        System.out.println(userAccount.getUsername());
     }
 
     
@@ -47,20 +48,86 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnView = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         enterpriseLabel = new javax.swing.JLabel();
         enterpriseLabel1 = new javax.swing.JLabel();
+        cbInsurance = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblFlt = new javax.swing.JTable();
         btnOrder = new javax.swing.JButton();
-        btnView = new javax.swing.JButton();
-        cbInsurance = new javax.swing.JCheckBox();
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        setBackground(new java.awt.Color(217, 235, 248));
+
+        btnView.setFont(new java.awt.Font("Tsukushi A Round Gothic", 1, 18)); // NOI18N
+        btnView.setForeground(new java.awt.Color(62, 80, 170));
+        btnView.setText("View History Order");
+        btnView.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(62, 80, 170));
+
+        enterpriseLabel.setFont(new java.awt.Font("Tsukushi A Round Gothic", 1, 18)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(255, 255, 255));
         enterpriseLabel.setText("Customer:");
 
-        enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel1.setFont(new java.awt.Font("Tsukushi B Round Gothic", 1, 18)); // NOI18N
+        enterpriseLabel1.setForeground(new java.awt.Color(255, 255, 255));
         enterpriseLabel1.setText("Order Your Flight:");
 
+        cbInsurance.setForeground(new java.awt.Color(255, 255, 255));
+        cbInsurance.setText("Buy Insurance?");
+        cbInsurance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbInsuranceActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AirlineImages/icons8-ticket-80-2.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
+                        .addComponent(cbInsurance)
+                        .addGap(283, 283, 283)))
+                .addComponent(jLabel1)
+                .addGap(15, 15, 15))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(enterpriseLabel1)
+                        .addGap(8, 8, 8)
+                        .addComponent(cbInsurance)
+                        .addGap(8, 8, 8))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))))
+        );
+
+        tblFlt.setBackground(new java.awt.Color(238, 238, 238));
         tblFlt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -75,7 +142,7 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Flight_id", "Original Place", "Destination Place", "Departure time", "Arriving time", "Airplane_id.", "Cost", "Airline Company"
+                "Flight_id", "Original Place", "Destination Place", "Departure time", "Arriving time", "Airplane_id", "Cost", "Airline Company"
             }
         ) {
             Class[] types = new Class [] {
@@ -95,24 +162,13 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblFlt);
 
+        btnOrder.setFont(new java.awt.Font("Tsukushi A Round Gothic", 1, 18)); // NOI18N
+        btnOrder.setForeground(new java.awt.Color(62, 80, 170));
         btnOrder.setText("Order");
+        btnOrder.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOrderActionPerformed(evt);
-            }
-        });
-
-        btnView.setText("View History Order");
-        btnView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewActionPerformed(evt);
-            }
-        });
-
-        cbInsurance.setText("Buy Insurance?");
-        cbInsurance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbInsuranceActionPerformed(evt);
             }
         });
 
@@ -121,81 +177,33 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(141, 141, 141)
+                .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(162, 162, 162))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(335, 335, 335)
-                        .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115)
-                        .addComponent(cbInsurance))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
-                        .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79)
-                        .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(145, Short.MAX_VALUE))
-            .addComponent(jScrollPane2)
+                        .addComponent(jScrollPane2)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbInsurance))
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                    .addComponent(btnView)
+                    .addComponent(btnOrder))
+                .addGap(96, 96, 96))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblFlt.getSelectedRow();
-        if(selectedRow>=0){
-            for(int i = 0;i < system.getAirlineDirectory().getAirlineList().size(); i++){
-                    if(system.getAirlineDirectory().getAirlineList().get(i).getName().equals((String) tblFlt.getValueAt(selectedRow,5))){
-                        Airline al = system.getAirlineDirectory().getAirlineList().get(i);
-                        if(cbInsurance.isSelected()==true){
-                            order = al.addOrder(userAccount.getName(), (String) tblFlt.getValueAt(selectedRow,0), (String) tblFlt.getValueAt(selectedRow,1), (String) tblFlt.getValueAt(selectedRow,2), (String) tblFlt.getValueAt(selectedRow,3), (String) tblFlt.getValueAt(selectedRow,4), (String) tblFlt.getValueAt(selectedRow,5),(String) tblFlt.getValueAt(selectedRow,6),(String) tblFlt.getValueAt(selectedRow,7), true);
-                            for(Customer cust : system.getCustomerDirectory().getCustList()){
-                                if(cust.getName().equals(userAccount.getName())){
-                                    cust.addOrder(order);
-                                }
-                            }
-                        }else{
-                            order = al.addOrder(userAccount.getName(), (String) tblFlt.getValueAt(selectedRow,0), (String) tblFlt.getValueAt(selectedRow,1), (String) tblFlt.getValueAt(selectedRow,2), (String) tblFlt.getValueAt(selectedRow,3), (String) tblFlt.getValueAt(selectedRow,4), (String) tblFlt.getValueAt(selectedRow,5),(String) tblFlt.getValueAt(selectedRow,6), (String) tblFlt.getValueAt(selectedRow,7), false);
-                            for(Customer cust : system.getCustomerDirectory().getCustList()){
-                                if(cust.getName().equals(userAccount.getName())){
-                                    cust.addOrder(order);
-                                }
-                            }
-                        }
-                    }
-            }
-        }else{
-            JOptionPane.showMessageDialog(null,"Please select a row");
-        }
-        JOptionPane.showMessageDialog(this,"Your Order is placed, your order id is:"+order.getOrder_id(),"Thank You",JOptionPane.WARNING_MESSAGE);
-        mainScreen.remove(this);
-        Component[] componentArray = mainScreen.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        CustomerAreaJPanel dwjp = (CustomerAreaJPanel) component;
-        CardLayout layout = (CardLayout)mainScreen.getLayout();
-        layout.previous(mainScreen);
-    }//GEN-LAST:event_btnOrderActionPerformed
-
-    private void cbInsuranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbInsuranceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbInsuranceActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
@@ -205,12 +213,67 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
         layout.next(mainScreen);
     }//GEN-LAST:event_btnViewActionPerformed
 
+    private void cbInsuranceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbInsuranceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbInsuranceActionPerformed
+
+    private void btnOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblFlt.getSelectedRow();
+        String fid = (String) tblFlt.getValueAt(selectedRow,0);
+        String ori = (String) tblFlt.getValueAt(selectedRow,1);
+        String des = (String) tblFlt.getValueAt(selectedRow,2);
+        String dep = (String) tblFlt.getValueAt(selectedRow,3);
+        String arr = (String) tblFlt.getValueAt(selectedRow,4);
+        String aid = (String) tblFlt.getValueAt(selectedRow,5);
+        String cos = (String) tblFlt.getValueAt(selectedRow,6);
+        if(selectedRow>=0){
+            A:
+            for(int i = 0;i < system.getAirlineDirectory().getAirlineList().size(); i++){
+                    if(system.getAirlineDirectory().getAirlineList().get(i).getName().equals((String) tblFlt.getValueAt(selectedRow,7))){
+                        Airline al = system.getAirlineDirectory().getAirlineList().get(i);
+                        order = new Order(userAccount.getName(),fid, ori, des, dep, arr, aid, cos, al.getName(), cbInsurance.isSelected());
+                        B:
+                        for(Customer cust : system.getCustomerDirectory().getCustList()){
+                            if(cust.getName().equals(userAccount.getName())){
+                                if(cust.checkIfOrderIsUnique(order)){
+                                    JOptionPane.showMessageDialog(this,"Your Order has existed","Thank you!",JOptionPane.WARNING_MESSAGE);
+                                    break B;
+                                }else{
+                                    cust.addOrder(order);
+                                    for(Flight fl : al.getFlightList()){
+                                        if(fl.getFlight_id().equals((String) tblFlt.getValueAt(selectedRow, 0))){
+                                           fl.getCustomerList().add(cust);
+                                        }
+                                    }
+                                    al.getOrderList().add(order);
+                                    JOptionPane.showMessageDialog(null,"Your Order is placed, your order id is:"+order.getOrder_id());
+//                                    JOptionPane.showMessageDialog(this,"Your Order is placed, your order id is:"+order.getOrder_id(),"Thank You",JOptionPane.WARNING_MESSAGE);
+                                }
+                            }
+                        }
+                        
+                    }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Please select a row");
+        }
+
+        //        mainScreen.remove(this);
+        //        Component[] componentArray = mainScreen.getComponents();
+        //        Component component = componentArray[componentArray.length - 1];
+        //        CardLayout layout = (CardLayout)mainScreen.getLayout();
+        //        layout.previous(mainScreen);
+    }//GEN-LAST:event_btnOrderActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrder;
     private javax.swing.JButton btnView;
     private javax.swing.JCheckBox cbInsurance;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel enterpriseLabel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblFlt;
     // End of variables declaration//GEN-END:variables
@@ -226,9 +289,9 @@ public class CustomerAreaJPanel extends javax.swing.JPanel {
                 row[2] = fl.getDestinationplace();
                 row[3] = fl.getDepartureTime();
                 row[4] = fl.getArrivingTime();
-                row[5] = fl.getUsedAirplane();
+                row[5] = fl.getAirplane_id();
                 row[6] = fl.getCost();
-                row[7] = al;
+                row[7] = al.getName();
                 model.addRow(row);
             }
         }
